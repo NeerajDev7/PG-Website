@@ -8,8 +8,8 @@ function Sidebar(){
             </div>
             <nav className='flex flex-col p-4 gap-1'>
                 <button onClick = {()=> navigate('/dashboard')} className='text-left px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50'>Dashboard</button>
-                <button onClick = {()=> navigate('/Tenants')} className='text-left px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50'>Tenants</button>
-                <button onClick = {()=> navigate('/rrooms')} className='text-left px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50'>Rooms</button>
+                <button onClick = {()=> navigate('/tenants')} className='text-left px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50'>Tenants</button>
+                <button onClick = {()=> navigate('/rooms')} className='text-left px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50'>Rooms</button>
                 <button onClick = {()=> navigate('/notifications')} className='text-left px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50'>Notifications</button>
             </nav>
         </div>
