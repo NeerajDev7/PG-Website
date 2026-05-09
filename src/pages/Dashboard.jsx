@@ -1,9 +1,12 @@
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import Sidebar from '../components/Sidebar'
+import { resetMonth } from '../store/tenantSlice'
+import { use } from 'react'
 
 function Dashboard() {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const tenants = useSelector((state) => state.tenants.tenants)
     const rooms = useSelector((state) => state.rooms.rooms)
 
@@ -12,13 +15,36 @@ function Dashboard() {
     const vacant = rooms.filter(r => !r.occupied).length
     const rentPending = tenants.filter(t => !t.paid).length
 
+    const getGreeting = () => {
+        const hour = new Date().getHours()
+        if(hour <  12) return 'Good morning'
+        if(hour < 17) return 'Good afternoon'
+        return 'Good evening'
+    }
+
+    const handleResetMonth = ()=>{
+        const confirmed = window.confirm('Reset all rents to pending for new month?')
+        if(confirmed) dispatch(resetMonth())
+    }
+
     return (
         <div className='flex min-h-screen bg-gray-50'>
             <Sidebar />
             <div className='flex-1 p-8'>
-                <h1 className='text-3xl font-bold text-gray-800 mb-2'>Dashboard</h1>
-                <p className='text-gray-500 mb-8'>Good morning, owner</p>
-                <div className='grid grid-cols-4 gap-6'>
+                <div className='flex justify-between items-center mb-2'>
+                    <div>
+                        <h1 className='text-3xl font-bold text-gray-800'>Dashboard</h1>
+                        <p className='text-gray-500'>{getGreeting()}, owner</p>
+                    </div>
+                    <button
+                        onClick={handleResetMonth}
+                        className='bg-orange-500 text-white px-5 py-2 rounded-lg font-medium hover:bg-orange-600 transition'
+                    >
+                        Reset Month
+                    </button>
+                </div>
+
+                <div className='grid grid-cols-4 gap-6 mt-8'>
                     {[
                         { label: 'Total Rooms', value: totalRooms },
                         { label: 'Occupied', value: occupied },

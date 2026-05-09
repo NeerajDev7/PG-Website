@@ -1,13 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
-import tenantsSlice from './tenantSlice'
 import tenantsReducer from './tenantSlice'
-import roomsReducer from './roomSlice'
+import roomsReducer from './roomsSlice'
+import { loadState,saveState} from './localStorage'
+
+const preloadState = loadState() 
 
 const store = configureStore({
     reducer : {
         tenants : tenantsReducer,
         rooms : roomsReducer,
-    }
+    },
+    preloadState : preloadState,
+})
+
+store.subscribe(()=>{
+    saveState(store.getState())
 })
 
 export default store
