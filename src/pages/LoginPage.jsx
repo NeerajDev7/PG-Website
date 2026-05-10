@@ -1,21 +1,28 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { login } from '../utils/auth'
 
 function LoginPage() {
     const navigate = useNavigate()
     const [form, setForm] = useState({ username: '', password: '' })
+    const [error, setError] = useState('')
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
+        setError('')
     }
 
     const handleLogin = () => {
-        navigate('/dashboard')
+        if (form.username === 'admin' && form.password === 'pg1234') {
+            login()
+            navigate('/dashboard')
+        } else {
+            setError('Invalid username or password')
+        }
     }
 
     return (
         <div className='min-h-screen flex' style={{ backgroundColor: '#F7F1E8' }}>
-
             {/* Left Panel */}
             <div
                 className='hidden md:flex w-1/2 flex-col justify-between p-12'
@@ -57,13 +64,13 @@ function LoginPage() {
                             name='username'
                             value={form.username}
                             onChange={handleChange}
-                            placeholder='Enter username'
+                            placeholder='admin'
                             className='w-full px-4 py-3 rounded-lg text-sm focus:outline-none'
                             style={{ border: '1px solid #C9A84C', backgroundColor: '#F7F1E8', color: '#1B3A2D' }}
                         />
                     </div>
 
-                    <div className='mb-8'>
+                    <div className='mb-3'>
                         <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>
                             Password
                         </label>
@@ -72,15 +79,19 @@ function LoginPage() {
                             type='password'
                             value={form.password}
                             onChange={handleChange}
-                            placeholder='Enter password'
+                            placeholder='••••••'
                             className='w-full px-4 py-3 rounded-lg text-sm focus:outline-none'
                             style={{ border: '1px solid #C9A84C', backgroundColor: '#F7F1E8', color: '#1B3A2D' }}
                         />
                     </div>
 
+                    {error && (
+                        <p className='text-sm mb-4 font-medium' style={{ color: '#dc2626' }}>{error}</p>
+                    )}
+
                     <button
                         onClick={handleLogin}
-                        className='w-full py-3 rounded-lg font-bold text-lg hover:opacity-90 transition'
+                        className='w-full py-3 rounded-lg font-bold text-lg hover:opacity-90 transition mt-5'
                         style={{ backgroundColor: '#1B3A2D', color: '#C9A84C', border: '2px solid #C9A84C' }}
                     >
                         Sign In
@@ -98,7 +109,6 @@ function LoginPage() {
                     </p>
                 </div>
             </div>
-
         </div>
     )
 }

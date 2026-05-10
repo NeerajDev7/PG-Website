@@ -5,11 +5,13 @@ import Sidebar from '../components/Sidebar'
 function Dashboard() {
     const dispatch = useDispatch()
     const tenants = useSelector((state) => state.tenants.tenants)
-    const rooms = useSelector((state) => state.rooms.rooms)
+    const rooms = useSelector((state) => state.tenants.rooms)
 
     const totalRooms = rooms.length
-    const occupied = rooms.filter(r => r.occupied).length
-    const vacant = rooms.filter(r => !r.occupied).length
+    const occupied = rooms.filter(r =>
+        tenants.some(t => t.room === `Room ${r.number}`)
+    ).length
+    const vacant = totalRooms - occupied
     const rentPending = tenants.filter(t => !t.paid).length
 
     const getGreeting = () => {

@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { markAsPaid, removeTenant } from '../store/tenantSlice'
-import { vacateRoom } from '../store/roomsSlice'
 import Sidebar from '../components/Sidebar'
 
 function TenantsPage() {
@@ -19,9 +18,7 @@ function TenantsPage() {
     const handleRemove = (tenant) => {
         const confirmed = window.confirm(`Remove ${tenant.name} from ${tenant.room}?`)
         if (!confirmed) return
-        const roomNumber = tenant.room.replace(/\D/g, '')
         dispatch(removeTenant(tenant.id))
-        dispatch(vacateRoom(roomNumber))
     }
 
     return (

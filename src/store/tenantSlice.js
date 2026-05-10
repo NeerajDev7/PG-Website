@@ -1,12 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const ALL_ROOMS = [
+    { id: 1, number: '101', type: 'Single', price: 25000 },
+    { id: 2, number: '102', type: 'Single', price: 25000 },
+    { id: 3, number: '203', type: 'Double', price: 12000 },
+    { id: 4, number: '204', type: 'Double', price: 12000 },
+    { id: 5, number: '305', type: 'Triple', price: 9000 },
+    { id: 6, number: '510', type: 'Double', price: 12000 },
+]
+
 const initialState = {
     tenants: [
         { id: 1, name: 'Neeraj Kumar', room: 'Room 203', rent: 12000, paid: true },
         { id: 2, name: 'Hari Krishna', room: 'Room 204', rent: 12000, paid: true },
         { id: 3, name: 'Rohit', room: 'Room 305', rent: 12000, paid: false },
         { id: 4, name: 'Aditya', room: 'Room 510', rent: 12000, paid: false },
-    ]
+    ],
+    rooms: ALL_ROOMS
 }
 
 const tenantsSlice = createSlice({
@@ -23,11 +33,11 @@ const tenantsSlice = createSlice({
         removeTenant: (state, action) => {
             state.tenants = state.tenants.filter(t => t.id !== action.payload)
         },
-        resetMonth : (state) =>{
-            state.tenants.forEach(t=> t.paid = false)
+        resetMonth: (state) => {
+            state.tenants.forEach(t => t.paid = false)
         }
     }
 })
 
-export const { addTenant, markAsPaid, removeTenant,resetMonth } = tenantsSlice.actions
+export const { addTenant, markAsPaid, removeTenant, resetMonth } = tenantsSlice.actions
 export default tenantsSlice.reducer

@@ -1,31 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
-import { BrowserRouter,Routes,Route } from 'react-router-dom'
-import TenantsPage from './pages/TenantsPage'
-import RoomsPage from  './pages/RoomsPage'
-import Dashboard from './pages/Dashboard'
-import NotificationPage from './pages/NotificationsPage'
-import LoginPage from './pages/LoginPage'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
+import LoginPage from './pages/LoginPage'
+import Dashboard from './pages/Dashboard'
+import TenantsPage from './pages/TenantsPage'
+import RoomsPage from './pages/RoomsPage'
+import NotificationsPage from './pages/NotificationsPage'
 import AddTenantPage from './pages/AddTenantPage'
-
-
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
-  return (
-  <BrowserRouter>
-    <Routes>
-      <Route path = "/" element={<LandingPage/>} />
-      <Route path = "/login" element={<LoginPage/>} />
-      <Route path = "/dashboard" element={<Dashboard/>} />
-      <Route path = "/tenants" element={<TenantsPage/>} />
-      <Route path = "/rooms" element={<RoomsPage/>} />
-      <Route path = "/notifications" element={<NotificationPage/>} />
-      <Route path = "/add-tenant" element = {<AddTenantPage/>}/>
-    </Routes>
-  </BrowserRouter>
-)
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<LandingPage />} />
+                <Route path='/login' element={<LoginPage />} />
+                <Route path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                <Route path='/tenants' element={<ProtectedRoute><TenantsPage /></ProtectedRoute>} />
+                <Route path='/rooms' element={<ProtectedRoute><RoomsPage /></ProtectedRoute>} />
+                <Route path='/notifications' element={<ProtectedRoute><NotificationsPage /></ProtectedRoute>} />
+                <Route path='/add-tenant' element={<ProtectedRoute><AddTenantPage /></ProtectedRoute>} />
+            </Routes>
+        </BrowserRouter>
+    )
 }
 
 export default App

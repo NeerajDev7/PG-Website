@@ -2,13 +2,11 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { addTenant } from '../store/tenantSlice'
-import { occupyRoom } from '../store/roomsSlice'
 import Sidebar from '../components/Sidebar'
 
 function AddTenantPage() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
     const [form, setForm] = useState({ name: '', room: '', rent: '' })
 
     const handleChange = (e) => {
@@ -25,9 +23,6 @@ function AddTenantPage() {
             rent: Number(form.rent),
             paid: false
         }))
-
-        const roomNumber = form.room.replace(/\D/g, '')
-        dispatch(occupyRoom({ roomNumber, tenantName: form.name }))
 
         navigate('/tenants')
     }
@@ -46,9 +41,7 @@ function AddTenantPage() {
                     style={{ backgroundColor: '#fff', border: '1px solid #C9A84C' }}
                 >
                     <div className='mb-6'>
-                        <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>
-                            Full Name
-                        </label>
+                        <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>Full Name</label>
                         <input
                             name='name'
                             value={form.name}
@@ -60,9 +53,7 @@ function AddTenantPage() {
                     </div>
 
                     <div className='mb-6'>
-                        <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>
-                            Room
-                        </label>
+                        <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>Room</label>
                         <input
                             name='room'
                             value={form.room}
@@ -74,9 +65,7 @@ function AddTenantPage() {
                     </div>
 
                     <div className='mb-10'>
-                        <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>
-                            Monthly Rent (₹)
-                        </label>
+                        <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>Monthly Rent (₹)</label>
                         <input
                             name='rent'
                             value={form.rent}
