@@ -3,10 +3,11 @@ import Sidebar from '../components/Sidebar'
 
 function NotificationsPage() {
     const tenants = useSelector((state) => state.tenants.tenants)
-    const rooms = useSelector((state) => state.rooms.rooms)
+    const rooms = useSelector((state) => state.tenants.rooms)
 
     const notifications = []
 
+    // Pending rent alerts
     tenants.filter(t => !t.paid).forEach(t => {
         notifications.push({
             id: `rent-${t.id}`,
@@ -16,7 +17,8 @@ function NotificationsPage() {
         })
     })
 
-    rooms.filter(r => !r.occupied).forEach(r => {
+    // Vacant room alerts — derived from tenants
+    rooms.filter(r => !tenants.some(t => t.room === `Room ${r.number}`)).forEach(r => {
         notifications.push({
             id: `room-${r.id}`,
             type: 'info',
