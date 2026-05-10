@@ -13,67 +13,98 @@ function LandingPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen" style={{ backgroundColor: '#F7F1E8' }}>
+
             {/* Navbar */}
-            <nav className="flex justify-between items-center px-10 py-5 bg-white shadow-sm">
-                <h1 className="text-2xl font-bold text-blue-600">Social Co-Living PG</h1>
-                <button onClick={() => navigate('/login')} className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">
+            <nav style={{ backgroundColor: '#1B3A2D' }} className="flex justify-between items-center px-10 py-5">
+                <h1 className="text-2xl font-bold tracking-wide" style={{ color: '#C9A84C' }}>
+                    Social Co-Living PG
+                </h1>
+                <button
+                    onClick={() => navigate('/login')}
+                    style={{ border: '2px solid #C9A84C', color: '#C9A84C', backgroundColor: 'transparent' }}
+                    className="px-5 py-2 rounded-lg font-semibold hover:opacity-80 transition"
+                >
                     Owner Login
                 </button>
             </nav>
 
             {/* Hero Section */}
-            <div className="flex flex-col items-center justify-center py-24 bg-gray-50 text-center px-4">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-                    Your Home Away From Home
+            <div
+                style={{ backgroundColor: '#1B3A2D' }}
+                className="flex flex-col items-center justify-center py-32 text-center px-4"
+            >
+                <p className="text-sm font-semibold tracking-widest mb-4" style={{ color: '#C9A84C' }}>
+                    MARATHAHALLI, BANGALORE
+                </p>
+                <h2 className="text-5xl md:text-6xl font-bold mb-6 leading-tight" style={{ color: '#F7F1E8' }}>
+                    Your Home <br />Away From Home
                 </h2>
-                <p className="text-gray-500 text-lg mb-8">
-                    Premium PG accommodation in Koramangala, Bangalore
+                <p className="text-lg mb-10 max-w-xl" style={{ color: '#a0b8a8' }}>
+                    Premium co-living spaces designed for comfort, community, and convenience.
                 </p>
                 <button
                     onClick={() => document.getElementById('rooms-section').scrollIntoView({ behavior: 'smooth' })}
-                    className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg hover:bg-blue-700 transition"
+                    style={{ backgroundColor: '#C9A84C', color: '#1B3A2D' }}
+                    className="px-10 py-4 rounded-lg text-lg font-bold hover:opacity-90 transition tracking-wide"
                 >
-                    View Rooms
+                    Explore Rooms
                 </button>
             </div>
 
+            {/* Divider */}
+            <div style={{ backgroundColor: '#C9A84C', height: '3px' }} />
+
             {/* Amenities Section */}
-            <div className="py-20 px-6 md:px-10">
-                <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Our Amenities</h2>
+            <div className="py-20 px-6 md:px-10" style={{ backgroundColor: '#F7F1E8' }}>
+                <p className="text-center text-xs font-semibold tracking-widest mb-2" style={{ color: '#C9A84C' }}>WHAT WE OFFER</p>
+                <h2 className="text-3xl font-bold text-center mb-12" style={{ color: '#1B3A2D' }}>
+                    Our Amenities
+                </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                     {amenities.map((item) => (
-                        <div key={item.title} className="bg-white border border-gray-200 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition">
+                        <div
+                            key={item.title}
+                            className="rounded-xl p-6 text-center hover:shadow-lg transition"
+                            style={{ backgroundColor: '#fff', border: '1px solid #C9A84C' }}
+                        >
                             <div className="text-4xl mb-3">{item.icon}</div>
-                            <h3 className="font-semibold text-gray-800 mb-1">{item.title}</h3>
-                            <p className="text-gray-500 text-sm">{item.desc}</p>
+                            <h3 className="font-bold mb-1" style={{ color: '#1B3A2D' }}>{item.title}</h3>
+                            <p className="text-sm" style={{ color: '#6b7c74' }}>{item.desc}</p>
                         </div>
                     ))}
                 </div>
             </div>
 
             {/* Available Rooms */}
-            <div id="rooms-section" className="py-20 px-6 md:px-10 bg-gray-50">
-                <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Available Rooms</h2>
+            <div id="rooms-section" className="py-20 px-6 md:px-10" style={{ backgroundColor: '#2D5A40' }}>
+                <p className="text-center text-xs font-semibold tracking-widest mb-2" style={{ color: '#C9A84C' }}>FIND YOUR SPACE</p>
+                <h2 className="text-3xl font-bold text-center mb-12" style={{ color: '#F7F1E8' }}>
+                    Available Rooms
+                </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                     {[
-                        { type: "Single Occupancy", room: "Room 101", price: "25000/-" },
-                        { type: "Double Sharing", room: "Room 203", price: "12000/-" },
-                        { type: "Triple Sharing", room: "Room 305", price: "9000/-" },
+                        { type: "Single Occupancy", room: "Room 101", price: "25,000" },
+                        { type: "Double Sharing", room: "Room 203", price: "12,000" },
+                        { type: "Triple Sharing", room: "Room 305", price: "9,000" },
                     ].map((item) => (
-                        <div key={item.room} className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
-                            <div className="h-36 bg-gray-200 flex items-center justify-center text-gray-400">
+                        <div
+                            key={item.room}
+                            className="rounded-xl overflow-hidden hover:shadow-xl transition"
+                            style={{ backgroundColor: '#F7F1E8', border: '1px solid #C9A84C' }}
+                        >
+                            <div className="h-36 flex items-center justify-center text-sm font-medium" style={{ backgroundColor: '#1B3A2D', color: '#C9A84C' }}>
                                 Room Photo
                             </div>
                             <div className="p-5">
-                                <h3 className="font-semibold text-gray-800">{item.type}</h3>
-                                <p className="text-gray-500 text-sm mb-3">{item.room}</p>
+                                <h3 className="font-bold mb-1" style={{ color: '#1B3A2D' }}>{item.type}</h3>
+                                <p className="text-sm mb-4" style={{ color: '#6b7c74' }}>{item.room}</p>
                                 <div className="flex justify-between items-center">
-                                    <span className="text-blue-600 font-bold text-lg">
-                                        {item.price}
-                                        <span className="text-gray-400 text-sm font-normal">/month</span>
+                                    <span className="font-bold text-xl" style={{ color: '#C9A84C' }}>
+                                        ₹{item.price}
+                                        <span className="text-sm font-normal" style={{ color: '#6b7c74' }}>/mo</span>
                                     </span>
-                                    <span className="bg-green-100 text-green-600 text-xs font-semibold px-3 py-1 rounded-full">
+                                    <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ backgroundColor: '#1B3A2D', color: '#C9A84C' }}>
                                         Available
                                     </span>
                                 </div>
@@ -83,20 +114,29 @@ function LandingPage() {
                 </div>
             </div>
 
+            {/* Gold Divider */}
+            <div style={{ backgroundColor: '#C9A84C', height: '3px' }} />
+
             {/* Contact */}
-            <div className="py-20 px-10 bg-white">
+            <div className="py-20 px-10" style={{ backgroundColor: '#1B3A2D' }}>
                 <div className="max-w-4xl mx-auto flex justify-between items-center">
                     <div>
-                        <h2 className="text-3xl font-bold text-gray-800 mb-6">Get in touch</h2>
-                        <p className="text-gray-500 mb-2"><span className="text-gray-800 font-medium">+91 9876543210</span></p>
-                        <p className="text-gray-500 mb-2"><span className="text-gray-800 font-medium">owner@gmail.com</span></p>
-                        <p className="text-gray-500 mb-2"><span className="text-gray-800 font-medium">12th Cross, Kaveri layout, Tulasi Theatre Road, Marathahalli Village, Bangalore</span></p>
+                        <p className="text-xs font-semibold tracking-widest mb-2" style={{ color: '#C9A84C' }}>REACH OUT</p>
+                        <h2 className="text-3xl font-bold mb-6" style={{ color: '#F7F1E8' }}>Get in touch</h2>
+                        <p className="mb-2 text-sm" style={{ color: '#a0b8a8' }}>+91 9876543210</p>
+                        <p className="mb-2 text-sm" style={{ color: '#a0b8a8' }}>owner@gmail.com</p>
+                        <p className="mb-2 text-sm max-w-xs" style={{ color: '#a0b8a8' }}>12th Cross, Kaveri layout, Marathahalli Village, Bangalore</p>
                     </div>
-                    <button onClick={() => navigate('/login')} className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-medium">
-                        Owner login
+                    <button
+                        onClick={() => navigate('/login')}
+                        style={{ backgroundColor: '#C9A84C', color: '#1B3A2D' }}
+                        className="px-8 py-4 rounded-lg text-lg font-bold hover:opacity-90 transition"
+                    >
+                        Owner Login
                     </button>
                 </div>
             </div>
+
         </div>
     );
 }

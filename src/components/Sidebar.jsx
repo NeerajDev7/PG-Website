@@ -8,8 +8,8 @@ function Sidebar() {
     const tenants = useSelector((state) => state.tenants.tenants)
     const rooms = useSelector((state) => state.rooms.rooms)
 
-    const notifCount = 
-        tenants.filter(t => !t.paid).length + 
+    const notifCount =
+        tenants.filter(t => !t.paid).length +
         rooms.filter(r => !r.occupied).length
 
     const links = [
@@ -20,24 +20,39 @@ function Sidebar() {
     ]
 
     return (
-        <div className='w-56 bg-white shadow-sm flex flex-col'>
-            <div className='px-6 py-6 border-b border-gray-100'>
-                <h1 className='text-xl font-bold text-blue-600'>Social Co-Living PG</h1>
+        <div className='w-56 flex flex-col' style={{ backgroundColor: '#1B3A2D', minHeight: '100vh' }}>
+            <div className='px-6 py-6' style={{ borderBottom: '1px solid #2D5A40' }}>
+                <h1 className='text-lg font-bold tracking-wide' style={{ color: '#C9A84C' }}>
+                    Social Co-Living PG
+                </h1>
             </div>
             <nav className='flex flex-col p-4 gap-1'>
                 {links.map((link) => (
                     <button
                         key={link.path}
                         onClick={() => navigate(link.path)}
-                        className={`text-left px-4 py-3 rounded-lg transition flex justify-between items-center ${
+                        className='text-left px-4 py-3 rounded-lg transition flex justify-between items-center'
+                        style={
                             location.pathname === link.path
-                                ? 'bg-blue-50 text-blue-600 font-semibold'
-                                : 'text-gray-600 hover:bg-gray-50'
-                        }`}
+                                ? { backgroundColor: '#C9A84C', color: '#1B3A2D', fontWeight: '700' }
+                                : { color: '#a0b8a8' }
+                        }
+                        onMouseEnter={e => {
+                            if (location.pathname !== link.path) {
+                                e.currentTarget.style.backgroundColor = '#2D5A40'
+                                e.currentTarget.style.color = '#F7F1E8'
+                            }
+                        }}
+                        onMouseLeave={e => {
+                            if (location.pathname !== link.path) {
+                                e.currentTarget.style.backgroundColor = 'transparent'
+                                e.currentTarget.style.color = '#a0b8a8'
+                            }
+                        }}
                     >
                         {link.label}
                         {link.badge > 0 && (
-                            <span className='bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full'>
+                            <span className='text-xs font-bold px-2 py-0.5 rounded-full' style={{ backgroundColor: '#C9A84C', color: '#1B3A2D' }}>
                                 {link.badge}
                             </span>
                         )}

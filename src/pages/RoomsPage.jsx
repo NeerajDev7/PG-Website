@@ -21,47 +21,62 @@ function RoomsPage() {
     })
 
     return (
-        <div className="flex min-h-screen bg-gray-50">
+        <div className="flex min-h-screen" style={{ backgroundColor: '#F7F1E8' }}>
             <Sidebar />
             <div className="flex-1 p-8">
                 <div className="flex justify-between items-center mb-8">
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-800">Rooms</h1>
-                        <p className="text-gray-500">{occupied} occupied · {vacant} vacant</p>
+                        <h1 className="text-3xl font-bold" style={{ color: '#1B3A2D' }}>Rooms</h1>
+                        <p className='mt-1' style={{ color: '#6b7c74' }}>{occupied} occupied · {vacant} vacant</p>
                     </div>
                     <div className="flex gap-2">
                         {['All', 'Vacant', 'Occupied'].map(f => (
                             <button
                                 key={f}
                                 onClick={() => setFilter(f)}
-                                className={`px-4 py-2 rounded-lg text-sm font-semibold transition ${
-                                    filter === f
-                                        ? 'bg-blue-600 text-white'
-                                        : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
-                                }`}
+                                className="px-4 py-2 rounded-lg text-sm font-semibold transition"
+                                style={filter === f
+                                    ? { backgroundColor: '#1B3A2D', color: '#C9A84C', border: '2px solid #C9A84C' }
+                                    : { backgroundColor: '#fff', color: '#1B3A2D', border: '1px solid #C9A84C' }
+                                }
                             >
                                 {f}
                             </button>
                         ))}
                     </div>
                 </div>
+
                 <div className="grid grid-cols-3 gap-6">
                     {filtered.map((room) => {
                         const tenant = getTenant(room.number)
                         return (
                             <div
                                 key={room.id}
-                                className={`bg-white rounded-xl border p-6 shadow-sm ${room.occupied ? 'border-red-100' : 'border-green-100'}`}
+                                className="rounded-xl p-6 shadow-sm hover:shadow-md transition"
+                                style={{
+                                    backgroundColor: '#fff',
+                                    border: room.occupied ? '1px solid #C9A84C' : '1px solid #2D5A40'
+                                }}
                             >
-                                <div className="flex justify-between items-center mb-3">
-                                    <h2 className="text-2xl font-bold text-gray-800">Room {room.number}</h2>
-                                    <span className={`text-xs font-semibold px-3 py-1 rounded-full ${room.occupied ? 'bg-red-100 text-red-500' : 'bg-green-100 text-green-600'}`}>
+                                <div className="flex justify-between items-center mb-4">
+                                    <h2 className="text-2xl font-bold" style={{ color: '#1B3A2D' }}>Room {room.number}</h2>
+                                    <span
+                                        className="text-xs font-bold px-3 py-1 rounded-full"
+                                        style={room.occupied
+                                            ? { backgroundColor: '#1B3A2D', color: '#C9A84C' }
+                                            : { backgroundColor: '#2D5A40', color: '#F7F1E8' }
+                                        }
+                                    >
                                         {room.occupied ? 'Occupied' : 'Vacant'}
                                     </span>
                                 </div>
-                                <p className="text-gray-500 text-sm mb-1">Type: {room.type}</p>
-                                <p className="text-gray-500 text-sm mb-1">Price: ₹{room.price}</p>
-                                <p className="text-gray-500 text-sm">Tenant: {tenant ? tenant.name : '—'}</p>
+                                <p className="text-sm mb-1" style={{ color: '#6b7c74' }}>Type: {room.type}</p>
+                                <p className="text-sm mb-1" style={{ color: '#6b7c74' }}>Price:
+                                    <span className='font-bold ml-1' style={{ color: '#C9A84C' }}>₹{room.price}</span>
+                                </p>
+                                <p className="text-sm" style={{ color: '#6b7c74' }}>
+                                    Tenant: <span className='font-medium' style={{ color: '#1B3A2D' }}>{tenant ? tenant.name : '—'}</span>
+                                </p>
                             </div>
                         )
                     })}

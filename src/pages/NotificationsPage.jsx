@@ -7,7 +7,6 @@ function NotificationsPage() {
 
     const notifications = []
 
-    // Pending rent alerts
     tenants.filter(t => !t.paid).forEach(t => {
         notifications.push({
             id: `rent-${t.id}`,
@@ -17,7 +16,6 @@ function NotificationsPage() {
         })
     })
 
-    // Vacant room alerts
     rooms.filter(r => !r.occupied).forEach(r => {
         notifications.push({
             id: `room-${r.id}`,
@@ -28,37 +26,47 @@ function NotificationsPage() {
     })
 
     return (
-        <div className='flex min-h-screen bg-gray-50'>
+        <div className='flex min-h-screen' style={{ backgroundColor: '#F7F1E8' }}>
             <Sidebar />
             <div className='flex-1 p-8'>
-                <h1 className='text-3xl font-bold text-gray-800 mb-2'>Notifications</h1>
-                <p className='text-gray-500 mb-8'>{notifications.length} active alerts</p>
+                <div className='mb-8'>
+                    <h1 className='text-3xl font-bold' style={{ color: '#1B3A2D' }}>Notifications</h1>
+                    <p className='mt-1' style={{ color: '#6b7c74' }}>{notifications.length} active alerts</p>
+                </div>
 
                 {notifications.length === 0 ? (
-                    <div className='bg-white rounded-xl border border-gray-100 shadow-sm p-12 text-center'>
-                        <p className='text-4xl mb-4'>✅</p>
-                        <p className='text-gray-800 font-semibold text-lg'>All clear!</p>
-                        <p className='text-gray-400 text-sm mt-1'>No pending rents or vacant rooms.</p>
+                    <div
+                        className='rounded-xl p-16 text-center shadow-sm'
+                        style={{ backgroundColor: '#fff', border: '1px solid #C9A84C' }}
+                    >
+                        <p className='text-5xl mb-4'>✅</p>
+                        <p className='text-xl font-bold mb-1' style={{ color: '#1B3A2D' }}>All clear!</p>
+                        <p className='text-sm' style={{ color: '#6b7c74' }}>No pending rents or vacant rooms.</p>
                     </div>
                 ) : (
                     <div className='flex flex-col gap-4'>
                         {notifications.map((n) => (
                             <div
                                 key={n.id}
-                                className={`bg-white rounded-xl border shadow-sm p-5 flex items-start gap-4 ${
-                                    n.type === 'warning' ? 'border-red-100' : 'border-blue-100'
-                                }`}
+                                className='rounded-xl p-5 flex items-start gap-4 shadow-sm'
+                                style={{
+                                    backgroundColor: '#fff',
+                                    border: n.type === 'warning'
+                                        ? '1px solid #C9A84C'
+                                        : '1px solid #2D5A40'
+                                }}
                             >
-                                <div className={`text-2xl`}>
+                                <div className='text-2xl'>
                                     {n.type === 'warning' ? '⚠️' : '🏠'}
                                 </div>
                                 <div>
-                                    <p className={`font-semibold text-sm mb-1 ${
-                                        n.type === 'warning' ? 'text-red-500' : 'text-blue-500'
-                                    }`}>
+                                    <p
+                                        className='font-bold text-sm mb-1'
+                                        style={{ color: n.type === 'warning' ? '#C9A84C' : '#2D5A40' }}
+                                    >
                                         {n.title}
                                     </p>
-                                    <p className='text-gray-600 text-sm'>{n.message}</p>
+                                    <p className='text-sm' style={{ color: '#6b7c74' }}>{n.message}</p>
                                 </div>
                             </div>
                         ))}
