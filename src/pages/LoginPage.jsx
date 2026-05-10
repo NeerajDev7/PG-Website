@@ -23,7 +23,8 @@ function LoginPage() {
 
     return (
         <div className='min-h-screen flex' style={{ backgroundColor: '#F7F1E8' }}>
-            {/* Left Panel */}
+
+            {/* Left Panel - hidden on mobile */}
             <div
                 className='hidden md:flex w-1/2 flex-col justify-between p-12'
                 style={{ backgroundColor: '#1B3A2D' }}
@@ -48,9 +49,18 @@ function LoginPage() {
             </div>
 
             {/* Right Panel */}
-            <div className='flex-1 flex items-center justify-center px-8'>
+            <div className='flex-1 flex flex-col items-center justify-center px-6 md:px-8 py-12'>
+
+                {/* Mobile logo */}
+                <div className='md:hidden mb-8 text-center'>
+                    <h1 className='text-2xl font-bold tracking-wide' style={{ color: '#1B3A2D' }}>
+                        Social Co-Living PG
+                    </h1>
+                    <p className='text-sm mt-1' style={{ color: '#6b7c74' }}>Owner Portal</p>
+                </div>
+
                 <div
-                    className='w-full max-w-md rounded-2xl p-10 shadow-sm'
+                    className='w-full max-w-md rounded-2xl p-6 md:p-10 shadow-sm'
                     style={{ backgroundColor: '#fff', border: '1px solid #C9A84C' }}
                 >
                     <h2 className='text-2xl font-bold mb-1' style={{ color: '#1B3A2D' }}>Welcome back</h2>

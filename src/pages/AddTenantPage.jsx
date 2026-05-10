@@ -21,7 +21,14 @@ function AddTenantPage() {
             name: form.name,
             room: form.room,
             rent: Number(form.rent),
-            paid: false
+            paid: false,
+            phone: '',
+            email: '',
+            hometown: '',
+            address: '',
+            emergencyContact: { name: '', phone: '', relation: '' },
+            rentHistory: [],
+            documents: []
         }))
 
         navigate('/tenants')
@@ -30,17 +37,17 @@ function AddTenantPage() {
     return (
         <div className='flex min-h-screen' style={{ backgroundColor: '#F7F1E8' }}>
             <Sidebar />
-            <div className='flex-1 p-8'>
-                <div className='mb-8'>
-                    <h1 className='text-3xl font-bold' style={{ color: '#1B3A2D' }}>Add Tenant</h1>
-                    <p className='mt-1' style={{ color: '#6b7c74' }}>Fill in the details below</p>
+            <div className='flex-1 p-4 md:p-8 mt-16 md:mt-0'>
+                <div className='mb-6'>
+                    <h1 className='text-2xl md:text-3xl font-bold' style={{ color: '#1B3A2D' }}>Add Tenant</h1>
+                    <p className='mt-1 text-sm' style={{ color: '#6b7c74' }}>Fill in the details below</p>
                 </div>
 
                 <div
-                    className='rounded-2xl p-10 shadow-sm max-w-lg'
+                    className='rounded-2xl p-6 md:p-10 shadow-sm w-full max-w-lg'
                     style={{ backgroundColor: '#fff', border: '1px solid #C9A84C' }}
                 >
-                    <div className='mb-6'>
+                    <div className='mb-5'>
                         <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>Full Name</label>
                         <input
                             name='name'
@@ -52,7 +59,7 @@ function AddTenantPage() {
                         />
                     </div>
 
-                    <div className='mb-6'>
+                    <div className='mb-5'>
                         <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>Room</label>
                         <input
                             name='room'
@@ -64,7 +71,7 @@ function AddTenantPage() {
                         />
                     </div>
 
-                    <div className='mb-10'>
+                    <div className='mb-8'>
                         <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>Monthly Rent (₹)</label>
                         <input
                             name='rent'
@@ -79,14 +86,14 @@ function AddTenantPage() {
                     <div className='flex gap-3'>
                         <button
                             onClick={() => navigate('/tenants')}
-                            className='flex-1 py-3 rounded-lg font-semibold hover:opacity-80 transition'
+                            className='flex-1 py-3 rounded-lg font-semibold hover:opacity-80 transition text-sm'
                             style={{ backgroundColor: '#F7F1E8', color: '#1B3A2D', border: '1px solid #C9A84C' }}
                         >
                             Cancel
                         </button>
                         <button
                             onClick={handleSubmit}
-                            className='flex-1 py-3 rounded-lg font-bold hover:opacity-90 transition'
+                            className='flex-1 py-3 rounded-lg font-bold hover:opacity-90 transition text-sm'
                             style={{ backgroundColor: '#1B3A2D', color: '#C9A84C', border: '2px solid #C9A84C' }}
                         >
                             Add Tenant
