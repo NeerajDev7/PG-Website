@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { resetMonth } from '../store/tenantSlice'
 import Sidebar from '../components/Sidebar'
+import toast from 'react-hot-toast'
+import PageTransition from '../components/PageTransition'
 
 function Dashboard() {
     const dispatch = useDispatch()
@@ -23,7 +25,10 @@ function Dashboard() {
 
     const handleResetMonth = () => {
         const confirmed = window.confirm('Reset all rents to Pending for new month?')
-        if (confirmed) dispatch(resetMonth())
+        if (confirmed) {
+            dispatch(resetMonth())
+            toast.success('New month started — all rents reset!')
+        }
     }
 
     const stats = [
@@ -34,6 +39,7 @@ function Dashboard() {
     ]
 
     return (
+        <PageTransition>
         <div className='flex min-h-screen' style={{ backgroundColor: '#F7F1E8' }}>
             <Sidebar />
             <div className='flex-1 p-4 md:p-8 mt-16 md:mt-0'>
@@ -66,6 +72,7 @@ function Dashboard() {
                 </div>
             </div>
         </div>
+        </PageTransition>
     )
 }
 

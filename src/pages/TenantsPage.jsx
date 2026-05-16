@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { markAsPaid, removeTenant } from '../store/tenantSlice'
 import Sidebar from '../components/Sidebar'
+import toast from 'react-hot-toast'
+import PageTransition from '../components/PageTransition'
 
 function TenantsPage() {
     const navigate = useNavigate()
@@ -19,9 +21,11 @@ function TenantsPage() {
         const confirmed = window.confirm(`Remove ${tenant.name} from ${tenant.room}?`)
         if (!confirmed) return
         dispatch(removeTenant(tenant.id))
+        toast.success(`${tenant.name} removed`)
     }
 
     return (
+        <PageTransition>
         <div className='flex min-h-screen' style={{ backgroundColor: '#F7F1E8' }}>
             <Sidebar />
             <div className='flex-1 p-4 md:p-8 mt-16 md:mt-0'>
@@ -80,7 +84,10 @@ function TenantsPage() {
                                 <div className='flex gap-2'>
                                     {!tenant.paid && (
                                         <button
-                                            onClick={() => dispatch(markAsPaid(tenant.id))}
+                                            onClick={() => {
+                                                dispatch(markAsPaid(tenant.id))
+                                                toast.success(`${tenant.name} marked as paid!`)
+                                            }}
                                             className='flex-1 py-2 rounded-lg font-semibold text-sm'
                                             style={{ backgroundColor: '#2D5A40', color: '#C9A84C' }}
                                         >
@@ -145,7 +152,10 @@ function TenantsPage() {
                                         <td className='px-6 py-4 flex gap-2'>
                                             {!tenant.paid && (
                                                 <button
-                                                    onClick={() => dispatch(markAsPaid(tenant.id))}
+                                                    onClick={() => {
+                                                        dispatch(markAsPaid(tenant.id))
+                                                        toast.success(`${tenant.name} marked as paid!`)
+                                                    }}
                                                     className='text-sm px-4 py-1.5 rounded-lg font-semibold hover:opacity-80 transition'
                                                     style={{ backgroundColor: '#2D5A40', color: '#C9A84C' }}
                                                 >
@@ -168,6 +178,7 @@ function TenantsPage() {
                 </div>
             </div>
         </div>
+        </PageTransition>
     )
 }
 

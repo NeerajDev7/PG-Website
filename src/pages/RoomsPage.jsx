@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import Sidebar from '../components/Sidebar'
+import PageTransition from '../components/PageTransition'
 
 function RoomsPage() {
     const tenants = useSelector((state) => state.tenants.tenants)
@@ -27,6 +28,7 @@ function RoomsPage() {
     })
 
     return (
+        <PageTransition>
         <div className="flex min-h-screen" style={{ backgroundColor: '#F7F1E8' }}>
             <Sidebar />
             <div className="flex-1 p-4 md:p-8 mt-16 md:mt-0">
@@ -89,6 +91,7 @@ function RoomsPage() {
                 </div>
             </div>
         </div>
+        </PageTransition>
     )
 }
 

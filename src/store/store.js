@@ -1,18 +1,25 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 import tenantsReducer from './tenantSlice'
-import { loadState,saveState} from './localStorage'
 
-const preloadState = loadState() 
+const persistConfig = {
+    key: 'pg-manager',
+    storage,
+}
 
-const store = configureStore({
-    reducer : {
-        tenants : tenantsReducer,
+const persistedReducer = persistReducer(persistConfig, tenantsReducer)
+
+export const store = configureStore({
+    reducer: {
+        tenants: persistedReducer,
     },
-    preloadState : preloadState,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
 })
 
-store.subscribe(()=>{
-    saveState(store.getState())
-})
+export const persistor = persistStore(store)
 
 export default store

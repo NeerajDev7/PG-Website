@@ -1,19 +1,11 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { login } from '../utils/auth'
 import PageTransition from '../components/PageTransition'
-
-function LoginPage() {
+function OwnerLoginPage() {
     const navigate = useNavigate()
     const [form, setForm] = useState({ username: '', password: '' })
     const [error, setError] = useState('')
-
-    // Hardcoded tenant credentials mapped to tenant ids
-    const tenantCredentials = [
-        { username: 'neeraj', password: 'tenant123', tenantId: 1 },
-        { username: 'hari', password: 'tenant123', tenantId: 2 },
-        { username: 'rohit', password: 'tenant123', tenantId: 3 },
-        { username: 'aditya', password: 'tenant123', tenantId: 4 },
-    ]
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -21,15 +13,11 @@ function LoginPage() {
     }
 
     const handleLogin = () => {
-        const match = tenantCredentials.find(
-            t => t.username === form.username && t.password === form.password
-        )
-        if (match) {
-            sessionStorage.setItem('tenant-auth', 'true')
-            sessionStorage.setItem('tenant-id', match.tenantId)
-            navigate('/tenant/dashboard')
+        if (form.username === 'admin' && form.password === 'pg1234') {
+            login()
+            navigate('/dashboard')
         } else {
-            setError('Invalid tenant credentials')
+            setError('Invalid owner credentials')
         }
     }
 
@@ -40,7 +28,7 @@ function LoginPage() {
             {/* Left Panel */}
             <div
                 className='hidden md:flex w-1/2 flex-col justify-between p-12'
-                style={{ backgroundColor: '#2D5A40' }}
+                style={{ backgroundColor: '#1B3A2D' }}
             >
                 <h1
                     className='text-2xl font-bold tracking-wide cursor-pointer'
@@ -51,16 +39,16 @@ function LoginPage() {
                 </h1>
                 <div>
                     <p className='text-xs font-semibold tracking-widest mb-3' style={{ color: '#C9A84C' }}>
-                        TENANT PORTAL
+                        OWNER PORTAL
                     </p>
                     <h2 className='text-4xl font-bold leading-tight mb-4' style={{ color: '#F7F1E8' }}>
-                        Welcome home, <br /> tenant.
+                        Manage your PG <br /> with ease.
                     </h2>
                     <p style={{ color: '#a0b8a8' }}>
-                        View your room, rent status and payment history.
+                        Track tenants, rooms, rent — all in one place.
                     </p>
                 </div>
-                <p className='text-xs' style={{ color: '#1B3A2D' }}>
+                <p className='text-xs' style={{ color: '#2D5A40' }}>
                     © 2026 Social Co-Living PG
                 </p>
             </div>
@@ -77,7 +65,7 @@ function LoginPage() {
                     >
                         Social Co-Living PG
                     </h1>
-                    <p className='text-sm mt-1' style={{ color: '#6b7c74' }}>Tenant Portal</p>
+                    <p className='text-sm mt-1' style={{ color: '#6b7c74' }}>Owner Portal</p>
                 </div>
 
                 <div
@@ -87,13 +75,13 @@ function LoginPage() {
                     {/* Badge */}
                     <span
                         className='text-xs font-bold px-3 py-1 rounded-full mb-4 inline-block'
-                        style={{ backgroundColor: '#2D5A40', color: '#C9A84C' }}
+                        style={{ backgroundColor: '#1B3A2D', color: '#C9A84C' }}
                     >
-                        TENANT ACCESS
+                        OWNER ACCESS
                     </span>
 
-                    <h2 className='text-2xl font-bold mb-1 mt-3' style={{ color: '#1B3A2D' }}>Tenant Login</h2>
-                    <p className='text-sm mb-8' style={{ color: '#6b7c74' }}>Sign in to view your details</p>
+                    <h2 className='text-2xl font-bold mb-1 mt-3' style={{ color: '#1B3A2D' }}>Owner Login</h2>
+                    <p className='text-sm mb-8' style={{ color: '#6b7c74' }}>Sign in to manage your PG</p>
 
                     <div className='mb-5'>
                         <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>
@@ -103,7 +91,7 @@ function LoginPage() {
                             name='username'
                             value={form.username}
                             onChange={handleChange}
-                            placeholder='e.g. neeraj'
+                            placeholder='admin'
                             className='w-full px-4 py-3 rounded-lg text-sm focus:outline-none'
                             style={{ border: '1px solid #C9A84C', backgroundColor: '#F7F1E8', color: '#1B3A2D' }}
                         />
@@ -131,13 +119,13 @@ function LoginPage() {
                     <button
                         onClick={handleLogin}
                         className='w-full py-3 rounded-lg font-bold text-lg hover:opacity-90 transition mt-5'
-                        style={{ backgroundColor: '#2D5A40', color: '#C9A84C', border: '2px solid #C9A84C' }}
+                        style={{ backgroundColor: '#1B3A2D', color: '#C9A84C', border: '2px solid #C9A84C' }}
                     >
-                        Sign In as Tenant
+                        Sign In as Owner
                     </button>
 
                     <p className='text-center text-sm mt-6' style={{ color: '#6b7c74' }}>
-                        Not a tenant?{' '}
+                        Not an owner?{' '}
                         <span
                             className='font-semibold cursor-pointer hover:opacity-80'
                             style={{ color: '#1B3A2D' }}
@@ -153,4 +141,4 @@ function LoginPage() {
     )
 }
 
-export default LoginPage
+export default OwnerLoginPage
