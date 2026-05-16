@@ -10,6 +10,8 @@ import NotificationsPage from './pages/NotificationsPage'
 import AddTenantPage from './pages/AddTenantPage'
 import TenantDashboard from './pages/TenantDashboard'
 import ProtectedRoute from './components/ProtectedRoute'
+import ProtectedTenantRoute from './components/ProtectedTenantRoute'
+import TenantProfilePage from './pages/TenantProfilePage'
 
 function AnimatedRoutes() {
     const location = useLocation()
@@ -20,12 +22,17 @@ function AnimatedRoutes() {
                 <Route path='/' element={<LandingPage />} />
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/owner/login' element={<OwnerLoginPage />} />
-                <Route path='/tenant/dashboard' element={<TenantDashboard />} />
+                <Route path='/tenant/dashboard' element={
+                    <ProtectedTenantRoute>
+                        <TenantDashboard />
+                    </ProtectedTenantRoute>
+                } />
                 <Route path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                 <Route path='/tenants' element={<ProtectedRoute><TenantsPage /></ProtectedRoute>} />
                 <Route path='/rooms' element={<ProtectedRoute><RoomsPage /></ProtectedRoute>} />
                 <Route path='/notifications' element={<ProtectedRoute><NotificationsPage /></ProtectedRoute>} />
                 <Route path='/add-tenant' element={<ProtectedRoute><AddTenantPage /></ProtectedRoute>} />
+                <Route path='/tenant/:id' element={<ProtectedRoute><TenantProfilePage /></ProtectedRoute>} />
             </Routes>
         </AnimatePresence>
     )

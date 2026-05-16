@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { login } from '../utils/auth'
-import PageTransition from '../components/PageTransition'
+import toast from 'react-hot-toast'
+
 function OwnerLoginPage() {
     const navigate = useNavigate()
     const [form, setForm] = useState({ username: '', password: '' })
@@ -15,17 +16,16 @@ function OwnerLoginPage() {
     const handleLogin = () => {
         if (form.username === 'admin' && form.password === 'pg1234') {
             login()
+            toast.success('Welcome back, Owner!')
             navigate('/dashboard')
         } else {
+            toast.error('Invalid owner credentials')
             setError('Invalid owner credentials')
         }
     }
 
     return (
-        <PageTransition>
         <div className='min-h-screen flex' style={{ backgroundColor: '#F7F1E8' }}>
-
-            {/* Left Panel */}
             <div
                 className='hidden md:flex w-1/2 flex-col justify-between p-12'
                 style={{ backgroundColor: '#1B3A2D' }}
@@ -53,10 +53,7 @@ function OwnerLoginPage() {
                 </p>
             </div>
 
-            {/* Right Panel */}
             <div className='flex-1 flex flex-col items-center justify-center px-6 md:px-8 py-12'>
-
-                {/* Mobile logo */}
                 <div className='md:hidden mb-8 text-center'>
                     <h1
                         className='text-2xl font-bold tracking-wide cursor-pointer'
@@ -72,7 +69,6 @@ function OwnerLoginPage() {
                     className='w-full max-w-md rounded-2xl p-6 md:p-10 shadow-sm'
                     style={{ backgroundColor: '#fff', border: '1px solid #C9A84C' }}
                 >
-                    {/* Badge */}
                     <span
                         className='text-xs font-bold px-3 py-1 rounded-full mb-4 inline-block'
                         style={{ backgroundColor: '#1B3A2D', color: '#C9A84C' }}
@@ -84,9 +80,7 @@ function OwnerLoginPage() {
                     <p className='text-sm mb-8' style={{ color: '#6b7c74' }}>Sign in to manage your PG</p>
 
                     <div className='mb-5'>
-                        <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>
-                            Username
-                        </label>
+                        <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>Username</label>
                         <input
                             name='username'
                             value={form.username}
@@ -98,9 +92,7 @@ function OwnerLoginPage() {
                     </div>
 
                     <div className='mb-3'>
-                        <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>
-                            Password
-                        </label>
+                        <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>Password</label>
                         <input
                             name='password'
                             type='password'
@@ -137,7 +129,6 @@ function OwnerLoginPage() {
                 </div>
             </div>
         </div>
-        </PageTransition>
     )
 }
 

@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import PageTransition from '../components/PageTransition'
+import toast from 'react-hot-toast'
 
 function LoginPage() {
     const navigate = useNavigate()
     const [form, setForm] = useState({ username: '', password: '' })
     const [error, setError] = useState('')
 
-    // Hardcoded tenant credentials mapped to tenant ids
     const tenantCredentials = [
         { username: 'neeraj', password: 'tenant123', tenantId: 1 },
         { username: 'hari', password: 'tenant123', tenantId: 2 },
@@ -27,17 +26,16 @@ function LoginPage() {
         if (match) {
             sessionStorage.setItem('tenant-auth', 'true')
             sessionStorage.setItem('tenant-id', match.tenantId)
+            toast.success(`Welcome back, ${form.username}!`)
             navigate('/tenant/dashboard')
         } else {
+            toast.error('Invalid tenant credentials')
             setError('Invalid tenant credentials')
         }
     }
 
     return (
-        <PageTransition>
         <div className='min-h-screen flex' style={{ backgroundColor: '#F7F1E8' }}>
-
-            {/* Left Panel */}
             <div
                 className='hidden md:flex w-1/2 flex-col justify-between p-12'
                 style={{ backgroundColor: '#2D5A40' }}
@@ -65,10 +63,7 @@ function LoginPage() {
                 </p>
             </div>
 
-            {/* Right Panel */}
             <div className='flex-1 flex flex-col items-center justify-center px-6 md:px-8 py-12'>
-
-                {/* Mobile logo */}
                 <div className='md:hidden mb-8 text-center'>
                     <h1
                         className='text-2xl font-bold tracking-wide cursor-pointer'
@@ -84,7 +79,6 @@ function LoginPage() {
                     className='w-full max-w-md rounded-2xl p-6 md:p-10 shadow-sm'
                     style={{ backgroundColor: '#fff', border: '1px solid #C9A84C' }}
                 >
-                    {/* Badge */}
                     <span
                         className='text-xs font-bold px-3 py-1 rounded-full mb-4 inline-block'
                         style={{ backgroundColor: '#2D5A40', color: '#C9A84C' }}
@@ -96,9 +90,7 @@ function LoginPage() {
                     <p className='text-sm mb-8' style={{ color: '#6b7c74' }}>Sign in to view your details</p>
 
                     <div className='mb-5'>
-                        <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>
-                            Username
-                        </label>
+                        <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>Username</label>
                         <input
                             name='username'
                             value={form.username}
@@ -110,9 +102,7 @@ function LoginPage() {
                     </div>
 
                     <div className='mb-3'>
-                        <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>
-                            Password
-                        </label>
+                        <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>Password</label>
                         <input
                             name='password'
                             type='password'
@@ -149,7 +139,6 @@ function LoginPage() {
                 </div>
             </div>
         </div>
-        </PageTransition>
     )
 }
 
