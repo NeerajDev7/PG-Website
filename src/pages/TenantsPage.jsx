@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 function TenantsPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const tenants = useSelector((state) => state.tenants.tenants);
+  const tenants = useSelector((state) => state.tenants.tenants ?? []);
   const [search, setSearch] = useState("");
   const [filterRoom, setFilterRoom] = useState("all");
   const [filterFloor, setFilterFloor] = useState("all");

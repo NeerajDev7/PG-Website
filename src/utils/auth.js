@@ -1,11 +1,11 @@
 export const login = () => {
-    sessionStorage.setItem('pg-auth', 'true')
+    localStorage.setItem('pg-auth', 'true')
 }
 
 export const logout = () => {
-    sessionStorage.removeItem('pg-auth')
+    localStorage.removeItem('pg-auth')
 }
 
 export const isAuthenticated = () => {
-    return sessionStorage.getItem('pg-auth') === 'true'
+    return localStorage.getItem('pg-auth') === 'true'
 }

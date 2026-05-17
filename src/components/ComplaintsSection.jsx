@@ -12,7 +12,7 @@ const CATEGORY_ICONS = {
 
 function ComplaintsSection() {
     const dispatch = useDispatch()
-    const complaints = useSelector((state) => state.tenants.complaints)
+    const complaints = useSelector((state) => state.tenants.complaints ?? [])
 
     const pending = complaints.filter(c => c.status === 'pending')
     const resolved = complaints.filter(c => c.status === 'resolved')

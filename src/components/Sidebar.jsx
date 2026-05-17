@@ -6,7 +6,7 @@ import { logout } from '../utils/auth'
 function Sidebar() {
     const navigate = useNavigate()
     const location = useLocation()
-    const tenants = useSelector((state) => state.tenants.tenants)
+    const tenants = useSelector((state) => state.tenants.tenants ?? [])
     const [open, setOpen] = useState(false)
 
     const notifCount = tenants.filter(t => !t.paid).length
@@ -26,7 +26,7 @@ function Sidebar() {
 
     const handleLogout = () => {
         logout()
-        navigate('/login')
+        navigate('/owner/login')
     }
 
     return (

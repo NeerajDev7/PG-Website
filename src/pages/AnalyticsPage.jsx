@@ -45,8 +45,8 @@ function StatCard({ label, value, sub, highlight }) {
 
 function AnalyticsPage() {
     const dispatch = useDispatch()
-    const tenants = useSelector((state) => state.tenants.tenants)
-    const expenses = useSelector((state) => state.expenses.expenses)
+    const tenants = useSelector((state) => state.tenants.tenants ?? [])
+    const expenses = useSelector((state) => state.expenses.expenses ?? [])
 
     const [selectedMonth, setSelectedMonth] = useState(CURRENT_MONTH)
     const [selectedYear, setSelectedYear] = useState(CURRENT_YEAR)

@@ -3,7 +3,7 @@ import { isAuthenticated } from '../utils/auth'
 
 function ProtectedRoute({ children }) {
     if (!isAuthenticated()) {
-        return <Navigate to='/login' replace />
+        return <Navigate to='/owner/login' replace />
     }
     return children
 }

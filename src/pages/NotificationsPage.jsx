@@ -3,8 +3,8 @@ import Sidebar from '../components/Sidebar'
 import PageTransition from '../components/PageTransition'
 
 function NotificationsPage() {
-    const tenants = useSelector((state) => state.tenants.tenants)
-    const rooms = useSelector((state) => state.tenants.rooms)
+    const tenants = useSelector((state) => state.tenants.tenants ?? [])
+    const rooms = useSelector((state) => state.tenants.rooms ?? [])
 
     const notifications = []
 

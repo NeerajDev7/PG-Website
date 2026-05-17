@@ -9,9 +9,9 @@ const CATEGORIES = ['Maintenance', 'Noise', 'Cleanliness', 'Food', 'Other']
 function TenantDashboard() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const tenants = useSelector((state) => state.tenants.tenants)
-    const rooms = useSelector((state) => state.tenants.rooms)
-    const complaints = useSelector((state) => state.tenants.complaints)
+   const tenants = useSelector((state) => state.tenants.tenants ?? [])
+const rooms = useSelector((state) => state.tenants.rooms ?? [])
+const complaints = useSelector((state) => state.tenants.complaints ?? [])
 
     const tenantId = Number(sessionStorage.getItem('tenant-id'))
     const tenant = tenants.find(t => t.id === tenantId)
