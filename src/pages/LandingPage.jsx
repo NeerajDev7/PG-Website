@@ -245,42 +245,11 @@ function LandingPage() {
           style={{ backgroundColor: "#1B3A2D" }}
         >
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+
               {/* Left Column */}
-              <div className="flex flex-col gap-12">
-                {/* Get In Touch */}
-                <div>
-                  <p
-                    className="text-xs font-semibold tracking-widest mb-2"
-                    style={{ color: "#C9A84C" }}
-                  >
-                    REACH OUT
-                  </p>
+              <div className="flex flex-col gap-10">
 
-                  <h2
-                    className="text-2xl md:text-3xl font-bold mb-6"
-                    style={{ color: "#F7F1E8" }}
-                  >
-                    Get in touch
-                  </h2>
-
-                  <p className="mb-3 text-sm" style={{ color: "#a0b8a8" }}>
-                    +91 9876543210
-                  </p>
-
-                  <p className="mb-3 text-sm" style={{ color: "#a0b8a8" }}>
-                    owner@gmail.com
-                  </p>
-
-                  <p
-                    className="text-sm leading-relaxed max-w-sm"
-                    style={{ color: "#a0b8a8" }}
-                  >
-                    12th Cross, Kaveri layout, Marathahalli Village, Bangalore
-                  </p>
-                </div>
-
-                {/* Know Your Owner */}
                 {/* Know Your Owner */}
                 <div>
                   <p
@@ -300,7 +269,6 @@ function LandingPage() {
                   <div className="flex items-center gap-5 mb-6">
                     {/* Modern Round Profile */}
                     <div className="relative flex-shrink-0">
-                      {/* Glow */}
                       <div
                         className="absolute inset-0 rounded-full blur-lg opacity-40"
                         style={{ backgroundColor: "#C9A84C" }}
@@ -359,11 +327,57 @@ function LandingPage() {
                     students.
                   </p>
                 </div>
-                
+
+                {/* Get In Touch */}
+                <div>
+                  <p
+                    className="text-xs font-semibold tracking-widest mb-2"
+                    style={{ color: "#C9A84C" }}
+                  >
+                    REACH OUT
+                  </p>
+
+                  <h2
+                    className="text-2xl md:text-3xl font-bold mb-6"
+                    style={{ color: "#F7F1E8" }}
+                  >
+                    Get in touch
+                  </h2>
+
+                  <div className="flex flex-col gap-4">
+                    <div>
+                      <p className="text-xs mb-1" style={{ color: "#6b7c74" }}>
+                        Phone
+                      </p>
+                      <p style={{ color: "#F7F1E8" }}>+91 9876543210</p>
+                    </div>
+
+                    <div>
+                      <p className="text-xs mb-1" style={{ color: "#6b7c74" }}>
+                        Email
+                      </p>
+                      <p style={{ color: "#F7F1E8" }}>owner@gmail.com</p>
+                    </div>
+
+                    <div>
+                      <p className="text-xs mb-1" style={{ color: "#6b7c74" }}>
+                        Address
+                      </p>
+                      <p
+                        className="text-sm leading-relaxed max-w-sm"
+                        style={{ color: "#a0b8a8" }}
+                      >
+                        12th Cross, Kaveri layout, Marathahalli Village,
+                        Bangalore
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Right Column */}
               <div className="flex flex-col gap-5">
+
                 {/* Map */}
                 <div
                   className="rounded-2xl overflow-hidden shadow-2xl"
@@ -386,7 +400,10 @@ function LandingPage() {
                       PG Location
                     </h3>
 
-                    <p className="text-xs mt-1" style={{ color: "#a0b8a8" }}>
+                    <p
+                      className="text-xs mt-1"
+                      style={{ color: "#a0b8a8" }}
+                    >
                       Marathahalli, Bangalore
                     </p>
                   </div>
@@ -394,13 +411,13 @@ function LandingPage() {
                   <iframe
                     title="PG Location"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62230.12412632636!2d77.675226!3d12.959172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae140f1d8f6c41%3A0x7b4de0f5d5e3d7e6!2sMarathahalli%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1710000000000"
-                    className="w-full h-[350px]"
+                    className="w-full h-[260px]"
                     loading="lazy"
                     allowFullScreen=""
                   />
                 </div>
 
-                {/* Buttons Below Map */}
+                {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     onClick={() => navigate("/login")}
@@ -424,6 +441,7 @@ function LandingPage() {
                     Owner Login
                   </button>
                 </div>
+
               </div>
             </div>
           </div>
