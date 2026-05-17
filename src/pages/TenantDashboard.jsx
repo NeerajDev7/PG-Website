@@ -41,7 +41,7 @@ function TenantDashboard() {
                     <button
                         onClick={handleLogout}
                         className='px-4 py-2 rounded-lg text-sm font-semibold hover:opacity-80 transition'
-                        style={{ border: '1px solid #dc2626', color: '#dc2626' }}
+                        style={{ border: '1px solid #dc2626', backgroundColor: '#dc2626', color : '#ffffff' }}
                     >
                         Logout
                     </button>

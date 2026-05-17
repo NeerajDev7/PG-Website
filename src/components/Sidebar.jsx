@@ -128,7 +128,7 @@ function Sidebar() {
                     <button
                         onClick={handleLogout}
                         className='w-full px-4 py-3 rounded-lg font-semibold hover:opacity-80 transition'
-                        style={{ backgroundColor: 'transparent', color: '#dc2626', border: '1px solid #dc2626' }}
+                        style={{ backgroundColor: '#dc2626', color: '#ffffff', border: '1px solid #dc2626' }}
                     >
                         Logout
                     </button>

@@ -1,11 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import PageTransition from "../components/PageTransition";
 
 function LandingPage() {
   const navigate = useNavigate();
-
-  const [showLocationModal, setShowLocationModal] = useState(false);
 
   const amenities = [
     { icon: "📶", title: "High-speed Wifi", desc: "100 Mbps fibre connection" },
@@ -23,7 +20,6 @@ function LandingPage() {
   return (
     <PageTransition>
       <div className="min-h-screen" style={{ backgroundColor: "#F7F1E8" }}>
-        
         {/* Navbar */}
         <nav
           style={{ backgroundColor: "#1B3A2D" }}
@@ -71,7 +67,10 @@ function LandingPage() {
                 .getElementById("rooms-section")
                 .scrollIntoView({ behavior: "smooth" })
             }
-            style={{ backgroundColor: "#C9A84C", color: "#1B3A2D" }}
+            style={{
+              backgroundColor: "#C9A84C",
+              color: "#1B3A2D",
+            }}
             className="px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-bold hover:opacity-90 transition tracking-wide"
           >
             Explore Rooms
@@ -79,7 +78,12 @@ function LandingPage() {
         </div>
 
         {/* Gold Divider */}
-        <div style={{ backgroundColor: "#C9A84C", height: "3px" }} />
+        <div
+          style={{
+            backgroundColor: "#C9A84C",
+            height: "3px",
+          }}
+        />
 
         {/* Amenities Section */}
         <div
@@ -119,10 +123,7 @@ function LandingPage() {
                   {item.title}
                 </h3>
 
-                <p
-                  className="text-xs md:text-sm"
-                  style={{ color: "#6b7c74" }}
-                >
+                <p className="text-xs md:text-sm" style={{ color: "#6b7c74" }}>
                   {item.desc}
                 </p>
               </div>
@@ -231,171 +232,202 @@ function LandingPage() {
         </div>
 
         {/* Gold Divider */}
-        <div style={{ backgroundColor: "#C9A84C", height: "3px" }} />
+        <div
+          style={{
+            backgroundColor: "#C9A84C",
+            height: "3px",
+          }}
+        />
 
-        {/* Contact Section */}
+        {/* Contact + Owner + Map */}
         <div
           className="py-16 md:py-20 px-6 md:px-10"
           style={{ backgroundColor: "#1B3A2D" }}
         >
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-            
-            <div>
-              <p
-                className="text-xs font-semibold tracking-widest mb-2"
-                style={{ color: "#C9A84C" }}
-              >
-                REACH OUT
-              </p>
-
-              <h2
-                className="text-2xl md:text-3xl font-bold mb-6"
-                style={{ color: "#F7F1E8" }}
-              >
-                Get in touch
-              </h2>
-
-              <p className="mb-2 text-sm" style={{ color: "#a0b8a8" }}>
-                +91 9876543210
-              </p>
-
-              <p className="mb-2 text-sm" style={{ color: "#a0b8a8" }}>
-                owner@gmail.com
-              </p>
-
-              <p
-                className="mb-2 text-sm max-w-xs"
-                style={{ color: "#a0b8a8" }}
-              >
-                12th Cross, Kaveri layout, Marathahalli Village, Bangalore
-              </p>
-
-              <button
-                onClick={() => setShowLocationModal(true)}
-                className="mt-4 text-sm font-medium hover:opacity-80 transition cursor-pointer"
-                style={{ color: "#C9A84C" }}
-              >
-                📍 View PG Location
-              </button>
-            </div>
-
-            <div className="flex flex-col gap-3 w-full md:w-auto">
-              <button
-                onClick={() => navigate("/login")}
-                style={{
-                  backgroundColor: "#C9A84C",
-                  color: "#1B3A2D",
-                }}
-                className="px-8 py-4 rounded-lg text-base md:text-lg font-bold hover:opacity-90 transition w-full md:w-auto"
-              >
-                Tenant Login
-              </button>
-
-              <p
-                className="text-center text-sm"
-                style={{ color: "#a0b8a8" }}
-              >
-                Owner?{" "}
-                <span
-                  onClick={() => navigate("/owner/login")}
-                  className="cursor-pointer underline hover:opacity-80 transition font-medium"
-                  style={{ color: "#C9A84C" }}
-                >
-                  Login here
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Location Modal */}
-        {showLocationModal && (
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center px-4">
-            
-            <div
-              className="relative w-full max-w-3xl rounded-2xl overflow-hidden shadow-2xl"
-              style={{ backgroundColor: "#F7F1E8" }}
-            >
-              
-              {/* Close Button */}
-              <button
-                onClick={() => setShowLocationModal(false)}
-                className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white shadow-md hover:scale-105 transition"
-              >
-                ✕
-              </button>
-
-              {/* Header */}
-              <div
-                className="px-6 py-5 border-b"
-                style={{ borderColor: "#C9A84C" }}
-              >
-                <h2
-                  className="text-2xl font-bold"
-                  style={{ color: "#1B3A2D" }}
-                >
-                  Our PG Location
-                </h2>
-
-                <p
-                  className="text-sm mt-1"
-                  style={{ color: "#6b7c74" }}
-                >
-                  Marathahalli, Bangalore
-                </p>
-              </div>
-
-              {/* Map */}
-              <a
-                href="https://maps.google.com/?q=Marathahalli,Bangalore"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <iframe
-                  title="PG Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62230.12412632636!2d77.675226!3d12.959172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae140f1d8f6c41%3A0x7b4de0f5d5e3d7e6!2sMarathahalli%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1710000000000"
-                  className="w-full h-[400px]"
-                  loading="lazy"
-                  allowFullScreen=""
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </a>
-
-              {/* Footer */}
-              <div className="p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              {/* Left Column */}
+              <div className="flex flex-col gap-12">
+                {/* Get In Touch */}
                 <div>
                   <p
-                    className="font-semibold text-lg"
-                    style={{ color: "#1B3A2D" }}
+                    className="text-xs font-semibold tracking-widest mb-2"
+                    style={{ color: "#C9A84C" }}
                   >
-                    Social Co-Living PG
+                    REACH OUT
+                  </p>
+
+                  <h2
+                    className="text-2xl md:text-3xl font-bold mb-6"
+                    style={{ color: "#F7F1E8" }}
+                  >
+                    Get in touch
+                  </h2>
+
+                  <p className="mb-3 text-sm" style={{ color: "#a0b8a8" }}>
+                    +91 9876543210
+                  </p>
+
+                  <p className="mb-3 text-sm" style={{ color: "#a0b8a8" }}>
+                    owner@gmail.com
                   </p>
 
                   <p
-                    className="text-sm"
-                    style={{ color: "#6b7c74" }}
+                    className="text-sm leading-relaxed max-w-sm"
+                    style={{ color: "#a0b8a8" }}
                   >
                     12th Cross, Kaveri layout, Marathahalli Village, Bangalore
                   </p>
                 </div>
 
-                <a
-                  href="https://maps.google.com/?q=Marathahalli,Bangalore"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-5 py-3 rounded-lg font-semibold transition hover:opacity-90"
+                {/* Know Your Owner */}
+                {/* Know Your Owner */}
+                <div>
+                  <p
+                    className="text-xs font-semibold tracking-widest mb-2"
+                    style={{ color: "#C9A84C" }}
+                  >
+                    MEET THE OWNER
+                  </p>
+
+                  <h2
+                    className="text-2xl md:text-3xl font-bold mb-8"
+                    style={{ color: "#F7F1E8" }}
+                  >
+                    Know Your Owner
+                  </h2>
+
+                  <div className="flex items-center gap-5 mb-6">
+                    {/* Modern Round Profile */}
+                    <div className="relative flex-shrink-0">
+                      {/* Glow */}
+                      <div
+                        className="absolute inset-0 rounded-full blur-lg opacity-40"
+                        style={{ backgroundColor: "#C9A84C" }}
+                      />
+
+                      <img
+                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80"
+                        alt="Owner"
+                        className="relative w-24 h-24 object-cover rounded-full border-2"
+                        style={{ borderColor: "#C9A84C" }}
+                      />
+                    </div>
+
+                    {/* Owner Info */}
+                    <div>
+                      <h3
+                        className="text-xl font-bold mb-3"
+                        style={{ color: "#F7F1E8" }}
+                      >
+                        Rajesh Kumar
+                      </h3>
+
+                      <div className="flex flex-wrap gap-2">
+                        <span
+                          className="px-3 py-1 rounded-full text-xs font-semibold"
+                          style={{
+                            backgroundColor: "#244635",
+                            color: "#C9A84C",
+                            border: "1px solid #C9A84C",
+                          }}
+                        >
+                          PG Owner
+                        </span>
+
+                        <span
+                          className="px-3 py-1 rounded-full text-xs font-semibold"
+                          style={{
+                            backgroundColor: "#244635",
+                            color: "#C9A84C",
+                            border: "1px solid #C9A84C",
+                          }}
+                        >
+                          8+ Years Experience
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p
+                    className="text-sm leading-relaxed max-w-xl"
+                    style={{ color: "#a0b8a8" }}
+                  >
+                    Managing PG accommodations in Bangalore for over 8 years.
+                    Focused on providing comfort, safety, cleanliness, and a
+                    friendly living experience for working professionals and
+                    students.
+                  </p>
+                </div>
+                
+              </div>
+
+              {/* Right Column */}
+              <div className="flex flex-col gap-5">
+                {/* Map */}
+                <div
+                  className="rounded-2xl overflow-hidden shadow-2xl"
                   style={{
-                    backgroundColor: "#1B3A2D",
-                    color: "#C9A84C",
+                    border: "1px solid #C9A84C",
+                    backgroundColor: "#F7F1E8",
                   }}
                 >
-                  Open in Google Maps
-                </a>
+                  <div
+                    className="px-4 py-3"
+                    style={{
+                      backgroundColor: "#1B3A2D",
+                      borderBottom: "1px solid #C9A84C",
+                    }}
+                  >
+                    <h3
+                      className="font-bold text-sm"
+                      style={{ color: "#C9A84C" }}
+                    >
+                      PG Location
+                    </h3>
+
+                    <p className="text-xs mt-1" style={{ color: "#a0b8a8" }}>
+                      Marathahalli, Bangalore
+                    </p>
+                  </div>
+
+                  <iframe
+                    title="PG Location"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62230.12412632636!2d77.675226!3d12.959172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae140f1d8f6c41%3A0x7b4de0f5d5e3d7e6!2sMarathahalli%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1710000000000"
+                    className="w-full h-[350px]"
+                    loading="lazy"
+                    allowFullScreen=""
+                  />
+                </div>
+
+                {/* Buttons Below Map */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    onClick={() => navigate("/login")}
+                    style={{
+                      backgroundColor: "#C9A84C",
+                      color: "#1B3A2D",
+                    }}
+                    className="flex-1 px-8 py-3 rounded-lg text-base font-bold hover:opacity-90 transition"
+                  >
+                    Tenant Login
+                  </button>
+
+                  <button
+                    onClick={() => navigate("/owner/login")}
+                    className="flex-1 px-8 py-3 rounded-lg text-base font-bold border transition hover:opacity-90"
+                    style={{
+                      borderColor: "#C9A84C",
+                      color: "#C9A84C",
+                    }}
+                  >
+                    Owner Login
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </PageTransition>
   );
