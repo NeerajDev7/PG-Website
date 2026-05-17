@@ -17,6 +17,7 @@ function Sidebar() {
         { label: 'Rooms', path: '/rooms' },
         { label: 'Analytics', path: '/analytics' },
         { label: 'Notifications', path: '/notifications', badge: notifCount },
+        { label: 'Menu Manager', path: '/menu-manager' },
     ]
 
     const handleNav = (path) => {

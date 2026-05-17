@@ -17,7 +17,52 @@ const initialState = {
     { id: 4, name: "Aditya", room: "Room 510", rent: 12000, paid: false },
   ],
   rooms: ALL_ROOMS,
-  complaints: [], // { id, tenantId, tenantName, room, category, description, status, createdAt }
+  menu: [
+    {
+        day: "Monday",
+        breakfast: ["Idli Sambar", "Coconut Chutney", "Filter Coffee"],
+        lunch: ["Rice", "Dal Tadka", "Aloo Sabzi", "Papad"],
+        dinner: ["Chapati", "Paneer Butter Masala", "Jeera Rice", "Salad"],
+    },
+    {
+        day: "Tuesday",
+        breakfast: ["Dosa", "Tomato Chutney", "Tea"],
+        lunch: ["Rice", "Sambar", "Beans Curry", "Buttermilk"],
+        dinner: ["Chapati", "Dal Makhani", "Veg Pulao", "Raita"],
+    },
+    {
+        day: "Wednesday",
+        breakfast: ["Poha", "Boiled Eggs", "Tea"],
+        lunch: ["Rice", "Rajma", "Aloo Gobi", "Papad"],
+        dinner: ["Chapati", "Egg Curry", "Fried Rice", "Salad"],
+    },
+    {
+        day: "Thursday",
+        breakfast: ["Upma", "Coconut Chutney", "Coffee"],
+        lunch: ["Rice", "Moong Dal", "Bhindi Fry", "Buttermilk"],
+        dinner: ["Chapati", "Chicken Curry", "Jeera Rice", "Raita"],
+    },
+    {
+        day: "Friday",
+        breakfast: ["Puri Bhaji", "Tea"],
+        lunch: ["Rice", "Chole", "Jeera Aloo", "Papad"],
+        dinner: ["Chapati", "Mutton Curry", "Veg Biryani", "Salad"],
+    },
+    {
+        day: "Saturday",
+        breakfast: ["Paratha", "Curd", "Pickle", "Tea"],
+        lunch: ["Rice", "Dal Fry", "Mix Veg", "Buttermilk"],
+        dinner: ["Chapati", "Paneer Tikka Masala", "Fried Rice", "Raita"],
+    },
+    {
+        day: "Sunday",
+        breakfast: ["Chole Bhature", "Tea"],
+        lunch: ["Veg Biryani", "Raita", "Salan", "Papad"],
+        dinner: ["Chapati", "Special Chicken Biryani", "Dal", "Salad"],
+    },
+],
+  complaints: [] // { id, tenantId, tenantName, room, category, description, status, createdAt }
+  
 };
 
 const tenantsSlice = createSlice({
@@ -89,6 +134,10 @@ const tenantsSlice = createSlice({
     deleteComplaint: (state, action) => {
       state.complaints = state.complaints.filter(c => c.id !== action.payload)
     },
+    updateMenu: (state, action) => {
+    // action.payload = { dayIndex, mealType, items }
+    state.menu[action.payload.dayIndex][action.payload.mealType] = action.payload.items
+}
   },
 });
 
@@ -103,6 +152,7 @@ export const {
   addComplaint,
   resolveComplaint,
   deleteComplaint,
+  updateMenu
 } = tenantsSlice.actions
 
 export default tenantsSlice.reducer;

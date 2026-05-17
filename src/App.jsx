@@ -13,6 +13,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import ProtectedTenantRoute from "./components/ProtectedTenantRoute";
 import TenantProfilePage from "./pages/TenantProfilePage";
 import AnalyticsPage from "./pages/AnalyticsPage";
+import MenuManagerPage from './pages/MenuManagerPage'
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -59,6 +60,7 @@ function AnimatedRoutes() {
           path="/tenant/:id"
           element={<ProtectedRoute><TenantProfilePage /></ProtectedRoute>}
         />
+        <Route path='/menu-manager' element={<ProtectedRoute><MenuManagerPage /></ProtectedRoute>} />
       </Routes>
     </AnimatePresence>
   );
