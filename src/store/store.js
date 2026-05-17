@@ -1,6 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { persistStore, persistReducer } from 'redux-persist'
+import { combineReducers } from '@reduxjs/toolkit'
 import tenantsReducer from './tenantSlice'
+import expensesReducer from './expenseSlice'
 
 // Custom storage engine
 const customStorage = {
@@ -17,17 +19,20 @@ const customStorage = {
     }
 }
 
+const rootReducer = combineReducers({
+    tenants: tenantsReducer,
+    expenses: expensesReducer,
+})
+
 const persistConfig = {
     key: 'pg-manager',
     storage: customStorage,
 }
 
-const persistedReducer = persistReducer(persistConfig, tenantsReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
-    reducer: {
-        tenants: persistedReducer,
-    },
+    reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false,

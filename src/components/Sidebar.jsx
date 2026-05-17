@@ -15,6 +15,7 @@ function Sidebar() {
         { label: 'Dashboard', path: '/dashboard' },
         { label: 'Tenants', path: '/tenants' },
         { label: 'Rooms', path: '/rooms' },
+        { label: 'Analytics', path: '/analytics' },
         { label: 'Notifications', path: '/notifications', badge: notifCount },
     ]
 

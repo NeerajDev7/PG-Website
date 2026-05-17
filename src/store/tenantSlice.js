@@ -17,6 +17,7 @@ const initialState = {
     { id: 4, name: "Aditya", room: "Room 510", rent: 12000, paid: false },
   ],
   rooms: ALL_ROOMS,
+  complaints: [], // { id, tenantId, tenantName, room, category, description, status, createdAt }
 };
 
 const tenantsSlice = createSlice({
@@ -51,7 +52,6 @@ const tenantsSlice = createSlice({
       }
     },
     removeDocument: (state, action) => {
-      // action.payload = { tenantId, docIndex }
       const tenant = state.tenants.find(
         (t) => t.id === action.payload.tenantId,
       );
@@ -59,8 +59,50 @@ const tenantsSlice = createSlice({
         tenant.documents.splice(action.payload.docIndex, 1);
       }
     },
+    updateTenant: (state, action) => {
+      const index = state.tenants.findIndex(t => t.id === action.payload.id)
+      if (index !== -1) {
+        state.tenants[index] = { ...state.tenants[index], ...action.payload }
+      }
+    },
+
+    // ── Complaints ──
+    addComplaint: (state, action) => {
+      state.complaints.push({
+        id: Date.now(),
+        tenantId: action.payload.tenantId,
+        tenantName: action.payload.tenantName,
+        room: action.payload.room,
+        category: action.payload.category,
+        description: action.payload.description,
+        status: 'pending', // 'pending' | 'resolved'
+        createdAt: new Date().toLocaleDateString('en-IN', {
+          day: '2-digit', month: 'short', year: 'numeric',
+          hour: '2-digit', minute: '2-digit'
+        }),
+      })
+    },
+    resolveComplaint: (state, action) => {
+      const complaint = state.complaints.find(c => c.id === action.payload)
+      if (complaint) complaint.status = 'resolved'
+    },
+    deleteComplaint: (state, action) => {
+      state.complaints = state.complaints.filter(c => c.id !== action.payload)
+    },
   },
 });
 
-export const { addTenant, markAsPaid, removeTenant, resetMonth, addDocument, removeDocument } = tenantsSlice.actions
+export const {
+  addTenant,
+  markAsPaid,
+  removeTenant,
+  resetMonth,
+  addDocument,
+  removeDocument,
+  updateTenant,
+  addComplaint,
+  resolveComplaint,
+  deleteComplaint,
+} = tenantsSlice.actions
+
 export default tenantsSlice.reducer;

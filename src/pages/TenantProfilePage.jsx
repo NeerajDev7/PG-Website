@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { addDocument, removeDocument } from "../store/tenantSlice";
 import Sidebar from "../components/Sidebar";
 import PageTransition from "../components/PageTransition";
@@ -19,6 +19,38 @@ function TenantProfilePage() {
   const room = rooms.find(
     (r) => r.number === tenant?.room?.replace("Room ", ""),
   );
+
+  const [editing, setEditing] = useState(false);
+  const [editForm, setEditForm] = useState({
+    phone: tenant?.phone || "",
+    email: tenant?.email || "",
+    hometown: tenant?.hometown || "",
+    address: tenant?.address || "",
+    mealType: tenant?.mealType || "vegetarian",
+    emergencyName: tenant?.emergencyContact?.name || "",
+    emergencyPhone: tenant?.emergencyContact?.phone || "",
+    emergencyRelation: tenant?.emergencyContact?.relation || "",
+  });
+
+  const handleEditSave = () => {
+    dispatch(
+      updateTenant({
+        id: tenant.id,
+        phone: editForm.phone,
+        email: editForm.email,
+        hometown: editForm.hometown,
+        address: editForm.address,
+        mealType: editForm.mealType,
+        emergencyContact: {
+          name: editForm.emergencyName,
+          phone: editForm.emergencyPhone,
+          relation: editForm.emergencyRelation,
+        },
+      }),
+    );
+    toast.success("Profile updated!");
+    setEditing(false);
+  };
 
   const handleUpload = (e) => {
     const file = e.target.files[0];
@@ -80,7 +112,7 @@ function TenantProfilePage() {
                 border: "1px solid #C9A84C",
               }}
             >
-              Back
+              ← Back
             </button>
             <div>
               <h1
@@ -105,12 +137,12 @@ function TenantProfilePage() {
                     }
               }
             >
-              {tenant.paid ? "Paid" : "Pending"}
+              {tenant.paid ? "✅ Paid" : "⚠️ Pending"}
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Personal Details */}
+            {/* Personal Details — Read Only */}
             <div
               className="rounded-xl p-6 shadow-sm"
               style={{ backgroundColor: "#fff", border: "1px solid #C9A84C" }}
@@ -127,6 +159,15 @@ function TenantProfilePage() {
                   { label: "Email", value: tenant.email || "—" },
                   { label: "Hometown", value: tenant.hometown || "—" },
                   { label: "Address", value: tenant.address || "—" },
+                  {
+                    label: "Meal Preference",
+                    value:
+                      tenant.mealType === "vegetarian"
+                        ? "🥦 Vegetarian"
+                        : tenant.mealType === "non-vegetarian"
+                          ? "🍖 Non-Vegetarian"
+                          : "—",
+                  },
                 ].map((item) => (
                   <div
                     key={item.label}
@@ -397,18 +438,15 @@ function TenantProfilePage() {
                         </div>
                       </div>
                       <div className="flex gap-2">
-                        <a
+                        <a>
                           href={doc.data}
                           download={doc.name}
-                          className="flex-1 py-1.5 rounded-lg text-xs font-semibold text-center hover:opacity-80 transition"
-                          style={{
-                            backgroundColor: "#2D5A40",
-                            color: "#C9A84C",
-                          }}
-                        >
+                          className="flex-1 py-1.5 rounded-lg text-xs
+                          font-semibold text-center hover:opacity-80 transition"
+                          style=
+                          {{ backgroundColor: "#2D5A40", color: "#C9A84C" }}
                           Download
                         </a>
-
                         <button
                           onClick={() => handleRemoveDoc(index)}
                           className="flex-1 py-1.5 rounded-lg text-xs font-semibold hover:opacity-80 transition"
