@@ -31,11 +31,11 @@ function ComplaintsSection() {
         return (
             <div
                 className='rounded-xl p-10 shadow-sm flex flex-col items-center justify-center'
-                style={{ backgroundColor: '#fff', border: '1px solid #C9A84C' }}
+                style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-color)' }}
             >
                 <p className='text-4xl mb-3'>🎉</p>
-                <p className='font-semibold mb-1' style={{ color: '#1B3A2D' }}>No complaints yet</p>
-                <p className='text-sm' style={{ color: '#6b7c74' }}>All tenants are happy!</p>
+                <p className='font-semibold mb-1' style={{ color: 'var(--text-primary)' }}>No complaints yet</p>
+                <p className='text-sm' style={{ color: 'var(--text-secondary)' }}>All tenants are happy!</p>
             </div>
         )
     }
@@ -43,27 +43,27 @@ function ComplaintsSection() {
     const ComplaintCard = ({ complaint }) => (
         <div
             className='rounded-lg p-4 mb-3'
-            style={{ backgroundColor: '#F7F1E8', border: '1px solid #E8DFC8' }}
+            style={{ backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border-subtle)' }}
         >
             <div className='flex justify-between items-start gap-2 flex-wrap'>
                 <div className='flex items-center gap-2'>
                     <span className='text-lg'>{CATEGORY_ICONS[complaint.category] || '📝'}</span>
                     <div>
-                        <p className='text-sm font-bold' style={{ color: '#1B3A2D' }}>{complaint.tenantName}</p>
-                        <p className='text-xs' style={{ color: '#6b7c74' }}>{complaint.room} · {complaint.createdAt}</p>
+                        <p className='text-sm font-bold' style={{ color: 'var(--text-primary)' }}>{complaint.tenantName}</p>
+                        <p className='text-xs' style={{ color: 'var(--text-secondary)' }}>{complaint.room} · {complaint.createdAt}</p>
                     </div>
                 </div>
                 <div className='flex items-center gap-2'>
                     <span
                         className='text-xs font-bold px-3 py-1 rounded-full'
-                        style={{ backgroundColor: '#1B3A2D', color: '#C9A84C' }}
+                        style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--accent)' }}
                     >
                         {complaint.category}
                     </span>
                     <span
                         className='text-xs font-bold px-3 py-1 rounded-full'
                         style={complaint.status === 'resolved'
-                            ? { backgroundColor: '#2D5A40', color: '#C9A84C' }
+                            ? { backgroundColor: 'var(--bg-secondary)', color: 'var(--accent)' }
                             : { backgroundColor: '#fff3cd', color: '#856404', border: '1px solid #ffc107' }
                         }
                     >
@@ -72,14 +72,14 @@ function ComplaintsSection() {
                 </div>
             </div>
 
-            <p className='text-sm mt-3 mb-4' style={{ color: '#1B3A2D' }}>{complaint.description}</p>
+            <p className='text-sm mt-3 mb-4' style={{ color: 'var(--text-primary)' }}>{complaint.description}</p>
 
             <div className='flex gap-2 justify-end'>
                 {complaint.status === 'pending' && (
                     <button
                         onClick={() => handleResolve(complaint.id)}
                         className='px-4 py-2 rounded-lg text-xs font-bold hover:opacity-90 transition'
-                        style={{ backgroundColor: '#1B3A2D', color: '#C9A84C', border: '2px solid #C9A84C' }}
+                        style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--accent)', border: '2px solid var(--border-color)' }}
                     >
                         ✅ Mark Resolved
                     </button>
@@ -87,7 +87,7 @@ function ComplaintsSection() {
                 <button
                     onClick={() => handleDelete(complaint.id)}
                     className='px-4 py-2 rounded-lg text-xs font-semibold hover:opacity-80 transition'
-                    style={{ backgroundColor: '#fff', color: '#dc2626', border: '1px solid #dc2626' }}
+                    style={{ backgroundColor: 'var(--bg-card)', color: '#dc2626', border: '1px solid var(--danger)' }}
                 >
                     🗑️ Delete
                 </button>
@@ -103,13 +103,13 @@ function ComplaintsSection() {
                     <p className='text-xs font-semibold' style={{ color: '#856404' }}>Pending</p>
                     <p className='text-2xl font-bold' style={{ color: '#856404' }}>{pending.length}</p>
                 </div>
-                <div className='rounded-xl px-5 py-4 shadow-sm' style={{ backgroundColor: '#fff', border: '1px solid #C9A84C' }}>
-                    <p className='text-xs font-semibold' style={{ color: '#6b7c74' }}>Resolved</p>
-                    <p className='text-2xl font-bold' style={{ color: '#2D5A40' }}>{resolved.length}</p>
+                <div className='rounded-xl px-5 py-4 shadow-sm' style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-color)' }}>
+                    <p className='text-xs font-semibold' style={{ color: 'var(--text-secondary)' }}>Resolved</p>
+                    <p className='text-2xl font-bold' style={{ color: 'var(--bg-secondary)' }}>{resolved.length}</p>
                 </div>
-                <div className='rounded-xl px-5 py-4 shadow-sm' style={{ backgroundColor: '#fff', border: '1px solid #C9A84C' }}>
-                    <p className='text-xs font-semibold' style={{ color: '#6b7c74' }}>Total</p>
-                    <p className='text-2xl font-bold' style={{ color: '#1B3A2D' }}>{complaints.length}</p>
+                <div className='rounded-xl px-5 py-4 shadow-sm' style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-color)' }}>
+                    <p className='text-xs font-semibold' style={{ color: 'var(--text-secondary)' }}>Total</p>
+                    <p className='text-2xl font-bold' style={{ color: 'var(--text-primary)' }}>{complaints.length}</p>
                 </div>
             </div>
 
@@ -124,7 +124,7 @@ function ComplaintsSection() {
             {/* Resolved complaints */}
             {resolved.length > 0 && (
                 <div>
-                    <h4 className='text-sm font-bold mb-3' style={{ color: '#2D5A40' }}>✅ Resolved ({resolved.length})</h4>
+                    <h4 className='text-sm font-bold mb-3' style={{ color: 'var(--bg-secondary)' }}>✅ Resolved ({resolved.length})</h4>
                     {resolved.slice().reverse().map(c => <ComplaintCard key={c.id} complaint={c} />)}
                 </div>
             )}

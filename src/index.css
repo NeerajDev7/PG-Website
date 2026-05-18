@@ -1,8 +1,207 @@
 @import "tailwindcss";
+
+/* ===== DEFAULT THEME — Luxury Green + Gold ===== */
+:root {
+    --bg-primary: #1B3A2D;
+    --bg-secondary: #2D5A40;
+    --bg-tertiary: #F7F1E8;
+    --bg-card: #ffffff;
+    --bg-input: #F7F1E8;
+
+    --accent: #C9A84C;
+    --accent-hover: #b8943d;
+
+    --text-primary: #1B3A2D;
+    --text-secondary: #6b7c74;
+    --text-muted: #a0b8a8;
+    --text-light: #F7F1E8;
+    --text-accent: #C9A84C;
+
+    --border-color: #C9A84C;
+    --border-subtle: #E8DFC8;
+    --divider: #F0EAD8;
+
+    --sidebar-bg: #1B3A2D;
+    --sidebar-text: #a0b8a8;
+    --sidebar-active-bg: #C9A84C;
+    --sidebar-active-text: #1B3A2D;
+    --sidebar-hover-bg: #2D5A40;
+    --sidebar-border: #2D5A40;
+
+    --badge-bg: #C9A84C;
+    --badge-text: #1B3A2D;
+
+    --paid-bg: #2D5A40;
+    --paid-text: #C9A84C;
+    --pending-bg: #fff3cd;
+    --pending-text: #856404;
+    --pending-border: #ffc107;
+
+    --danger: #dc2626;
+    --danger-bg: #fff;
+
+    --navbar-bg: #1B3A2D;
+    --hero-bg: #1B3A2D;
+    --footer-bg: #1B3A2D;
+    --menu-bg: #1B3A2D;
+    --rooms-section-bg: #2D5A40;
+    --amenities-bg: #F7F1E8;
+}
+
+/* ===== DARK MODE ===== */
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #1e293b;
+    --bg-card: #1e293b;
+    --bg-input: #0f172a;
+
+    --accent: #f59e0b;
+    --accent-hover: #d97706;
+
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --text-light: #f1f5f9;
+    --text-accent: #f59e0b;
+
+    --border-color: #f59e0b;
+    --border-subtle: #334155;
+    --divider: #334155;
+
+    --sidebar-bg: #0f172a;
+    --sidebar-text: #94a3b8;
+    --sidebar-active-bg: #f59e0b;
+    --sidebar-active-text: #0f172a;
+    --sidebar-hover-bg: #1e293b;
+    --sidebar-border: #1e293b;
+
+    --badge-bg: #f59e0b;
+    --badge-text: #0f172a;
+
+    --paid-bg: #166534;
+    --paid-text: #f59e0b;
+    --pending-bg: #422006;
+    --pending-text: #fbbf24;
+    --pending-border: #d97706;
+
+    --danger: #ef4444;
+    --danger-bg: #1e293b;
+
+    --navbar-bg: #0f172a;
+    --hero-bg: #0f172a;
+    --footer-bg: #0f172a;
+    --menu-bg: #0f172a;
+    --rooms-section-bg: #1e293b;
+    --amenities-bg: #1e293b;
+}
+
+/* ===== ICE COLD (was Royal Purple) ===== */
+[data-theme="purple"] {
+    --bg-primary: #8458B3;
+    --bg-secondary: #a28089;
+    --bg-tertiary: #e5eaf5;
+    --bg-card: #ffffff;
+    --bg-input: #e5eaf5;
+
+    --accent: #a0d2eb;
+    --accent-hover: #7bbdd8;
+
+    --text-primary: #8458B3;
+    --text-secondary: #a28089;
+    --text-muted: #d0bdf4;
+    --text-light: #e5eaf5;
+    --text-accent: #a0d2eb;
+
+    --border-color: #a0d2eb;
+    --border-subtle: #d0bdf4;
+    --divider: #e5eaf5;
+
+    --sidebar-bg: #8458B3;
+    --sidebar-text: #d0bdf4;
+    --sidebar-active-bg: #a0d2eb;
+    --sidebar-active-text: #8458B3;
+    --sidebar-hover-bg: #a28089;
+    --sidebar-border: #a28089;
+
+    --badge-bg: #a0d2eb;
+    --badge-text: #8458B3;
+
+    --paid-bg: #a28089;
+    --paid-text: #a0d2eb;
+    --pending-bg: #fff7ed;
+    --pending-text: #9a3412;
+    --pending-border: #fb923c;
+
+    --danger: #dc2626;
+    --danger-bg: #fff;
+
+    --navbar-bg: #8458B3;
+    --hero-bg: #8458B3;
+    --footer-bg: #8458B3;
+    --menu-bg: #8458B3;
+    --rooms-section-bg: #a28089;
+    --amenities-bg: #e5eaf5;
+}
+
+/* ===== DESERT NIGHT (was Ocean Blue) ===== */
+[data-theme="ocean"] {
+    --bg-primary: #12343b;
+    --bg-secondary: #2d545e;
+    --bg-tertiary: #e5eaf5;
+    --bg-card: #ffffff;
+    --bg-input: #e5eaf5;
+
+    --accent: #e1b382;
+    --accent-hover: #c89666;
+
+    --text-primary: #12343b;
+    --text-secondary: #2d545e;
+    --text-muted: #c89666;
+    --text-light: #e5eaf5;
+    --text-accent: #e1b382;
+
+    --border-color: #e1b382;
+    --border-subtle: #c89666;
+    --divider: #e1b382;
+
+    --sidebar-bg: #12343b;
+    --sidebar-text: #c89666;
+    --sidebar-active-bg: #e1b382;
+    --sidebar-active-text: #12343b;
+    --sidebar-hover-bg: #2d545e;
+    --sidebar-border: #2d545e;
+
+    --badge-bg: #e1b382;
+    --badge-text: #12343b;
+
+    --paid-bg: #2d545e;
+    --paid-text: #e1b382;
+    --pending-bg: #fff7ed;
+    --pending-text: #9a3412;
+    --pending-border: #fb923c;
+
+    --danger: #dc2626;
+    --danger-bg: #fff;
+
+    --navbar-bg: #12343b;
+    --hero-bg: #12343b;
+    --footer-bg: #12343b;
+    --menu-bg: #12343b;
+    --rooms-section-bg: #2d545e;
+    --amenities-bg: #e5eaf5;
+}
+
 body {
-    background-color: #1B3A2D;
+    background-color: var(--bg-primary);
+    transition: background-color 0.3s ease;
 }
 
 #root {
-    background-color: #1B3A2D;
+    background-color: var(--bg-primary);
+    transition: background-color 0.3s ease;
+}
+
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }

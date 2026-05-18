@@ -25,30 +25,30 @@ function OwnerLoginPage() {
     }
 
     return (
-        <div className='min-h-screen flex' style={{ backgroundColor: '#F7F1E8' }}>
+        <div className='min-h-screen flex' style={{ backgroundColor: 'var(--bg-tertiary)' }}>
             <div
                 className='hidden md:flex w-1/2 flex-col justify-between p-12'
-                style={{ backgroundColor: '#1B3A2D' }}
+                style={{ backgroundColor: 'var(--bg-primary)' }}
             >
                 <h1
                     className='text-2xl font-bold tracking-wide cursor-pointer'
                     onClick={() => navigate('/')}
-                    style={{ color: '#C9A84C' }}
+                    style={{ color: 'var(--accent)' }}
                 >
                     Social Co-Living PG
                 </h1>
                 <div>
-                    <p className='text-xs font-semibold tracking-widest mb-3' style={{ color: '#C9A84C' }}>
+                    <p className='text-xs font-semibold tracking-widest mb-3' style={{ color: 'var(--accent)' }}>
                         OWNER PORTAL
                     </p>
-                    <h2 className='text-4xl font-bold leading-tight mb-4' style={{ color: '#F7F1E8' }}>
+                    <h2 className='text-4xl font-bold leading-tight mb-4' style={{ color: 'var(--text-light)' }}>
                         Manage your PG <br /> with ease.
                     </h2>
-                    <p style={{ color: '#a0b8a8' }}>
+                    <p style={{ color: 'var(--text-muted)' }}>
                         Track tenants, rooms, rent — all in one place.
                     </p>
                 </div>
-                <p className='text-xs' style={{ color: '#2D5A40' }}>
+                <p className='text-xs' style={{ color: 'var(--bg-secondary)' }}>
                     © 2026 Social Co-Living PG
                 </p>
             </div>
@@ -58,41 +58,41 @@ function OwnerLoginPage() {
                     <h1
                         className='text-2xl font-bold tracking-wide cursor-pointer'
                         onClick={() => navigate('/')}
-                        style={{ color: '#1B3A2D' }}
+                        style={{ color: 'var(--text-primary)' }}
                     >
                         Social Co-Living PG
                     </h1>
-                    <p className='text-sm mt-1' style={{ color: '#6b7c74' }}>Owner Portal</p>
+                    <p className='text-sm mt-1' style={{ color: 'var(--text-secondary)' }}>Owner Portal</p>
                 </div>
 
                 <div
                     className='w-full max-w-md rounded-2xl p-6 md:p-10 shadow-sm'
-                    style={{ backgroundColor: '#fff', border: '1px solid #C9A84C' }}
+                    style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-color)' }}
                 >
                     <span
                         className='text-xs font-bold px-3 py-1 rounded-full mb-4 inline-block'
-                        style={{ backgroundColor: '#1B3A2D', color: '#C9A84C' }}
+                        style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--accent)' }}
                     >
                         OWNER ACCESS
                     </span>
 
-                    <h2 className='text-2xl font-bold mb-1 mt-3' style={{ color: '#1B3A2D' }}>Owner Login</h2>
-                    <p className='text-sm mb-8' style={{ color: '#6b7c74' }}>Sign in to manage your PG</p>
+                    <h2 className='text-2xl font-bold mb-1 mt-3' style={{ color: 'var(--text-primary)' }}>Owner Login</h2>
+                    <p className='text-sm mb-8' style={{ color: 'var(--text-secondary)' }}>Sign in to manage your PG</p>
 
                     <div className='mb-5'>
-                        <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>Username</label>
+                        <label className='block text-sm font-semibold mb-2' style={{ color: 'var(--text-primary)' }}>Username</label>
                         <input
                             name='username'
                             value={form.username}
                             onChange={handleChange}
                             placeholder='admin'
                             className='w-full px-4 py-3 rounded-lg text-sm focus:outline-none'
-                            style={{ border: '1px solid #C9A84C', backgroundColor: '#F7F1E8', color: '#1B3A2D' }}
+                            style={{ border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-tertiary)', color: 'var(--text-primary)' }}
                         />
                     </div>
 
                     <div className='mb-3'>
-                        <label className='block text-sm font-semibold mb-2' style={{ color: '#1B3A2D' }}>Password</label>
+                        <label className='block text-sm font-semibold mb-2' style={{ color: 'var(--text-primary)' }}>Password</label>
                         <input
                             name='password'
                             type='password'
@@ -100,7 +100,7 @@ function OwnerLoginPage() {
                             onChange={handleChange}
                             placeholder='••••••'
                             className='w-full px-4 py-3 rounded-lg text-sm focus:outline-none'
-                            style={{ border: '1px solid #C9A84C', backgroundColor: '#F7F1E8', color: '#1B3A2D' }}
+                            style={{ border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-tertiary)', color: 'var(--text-primary)' }}
                         />
                     </div>
 
@@ -111,16 +111,16 @@ function OwnerLoginPage() {
                     <button
                         onClick={handleLogin}
                         className='w-full py-3 rounded-lg font-bold text-lg hover:opacity-90 transition mt-5'
-                        style={{ backgroundColor: '#1B3A2D', color: '#C9A84C', border: '2px solid #C9A84C' }}
+                        style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--accent)', border: '2px solid var(--border-color)' }}
                     >
                         Sign In as Owner
                     </button>
 
-                    <p className='text-center text-sm mt-6' style={{ color: '#6b7c74' }}>
+                    <p className='text-center text-sm mt-6' style={{ color: 'var(--text-secondary)' }}>
                         Not an owner?{' '}
                         <span
                             className='font-semibold cursor-pointer hover:opacity-80'
-                            style={{ color: '#1B3A2D' }}
+                            style={{ color: 'var(--text-primary)' }}
                             onClick={() => navigate('/')}
                         >
                             Back to home

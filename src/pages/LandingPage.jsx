@@ -7,7 +7,7 @@ import PageTransition from "../components/PageTransition";
 function LandingPage() {
     const navigate = useNavigate();
     const [menuDay, setMenuDay] = useState(0);
-    const weeklyMenu = useSelector((state) => state.tenants.menu);
+    const weeklyMenu = useSelector((state) => state.tenants.menu || []);
 
     const amenities = [
         { icon: "📶", title: "High-speed Wifi", desc: "100 Mbps fibre connection" },
@@ -20,29 +20,29 @@ function LandingPage() {
 
     return (
         <PageTransition>
-            <div className="min-h-screen" style={{ backgroundColor: "#F7F1E8" }}>
+            <div className="min-h-screen" style={{ backgroundColor: "var(--bg-tertiary)" }}>
 
                 {/* Navbar */}
-                <nav style={{ backgroundColor: "#1B3A2D" }} className="flex justify-between items-center px-6 md:px-10 py-5">
-                    <h1 className="text-lg md:text-2xl font-bold tracking-wide" style={{ color: "#C9A84C" }}>
+                <nav style={{ backgroundColor: "var(--bg-primary)" }} className="flex justify-between items-center px-6 md:px-10 py-5">
+                    <h1 className="text-lg md:text-2xl font-bold tracking-wide" style={{ color: "var(--accent)" }}>
                         Social Co-Living PG
                     </h1>
                 </nav>
 
                 {/* Hero Section */}
-                <div style={{ backgroundColor: "#1B3A2D" }} className="flex flex-col items-center justify-center py-20 md:py-32 text-center px-6">
-                    <p className="text-xs font-semibold tracking-widest mb-4" style={{ color: "#C9A84C" }}>
+                <div style={{ backgroundColor: "var(--bg-primary)" }} className="flex flex-col items-center justify-center py-20 md:py-32 text-center px-6">
+                    <p className="text-xs font-semibold tracking-widest mb-4" style={{ color: "var(--accent)" }}>
                         MARATHAHALLI, BANGALORE
                     </p>
-                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style={{ color: "#F7F1E8" }}>
+                    <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style={{ color: "var(--text-light)" }}>
                         Your Home <br />Away From Home
                     </h2>
-                    <p className="text-base md:text-lg mb-10 max-w-xl" style={{ color: "#a0b8a8" }}>
+                    <p className="text-base md:text-lg mb-10 max-w-xl" style={{ color: "var(--text-muted)" }}>
                         Premium co-living spaces designed for comfort, community, and convenience.
                     </p>
                     <button
                         onClick={() => document.getElementById("rooms-section").scrollIntoView({ behavior: "smooth" })}
-                        style={{ backgroundColor: "#C9A84C", color: "#1B3A2D" }}
+                        style={{ backgroundColor: "var(--accent)", color: "var(--text-primary)" }}
                         className="px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-bold hover:opacity-90 transition tracking-wide"
                     >
                         Explore Rooms
@@ -50,36 +50,36 @@ function LandingPage() {
                 </div>
 
                 {/* Gold Divider */}
-                <div style={{ backgroundColor: "#C9A84C", height: "3px" }} />
+                <div style={{ backgroundColor: "var(--accent)", height: "3px" }} />
 
                 {/* Amenities Section */}
-                <div className="py-16 md:py-20 px-6 md:px-10" style={{ backgroundColor: "#F7F1E8" }}>
-                    <p className="text-center text-xs font-semibold tracking-widest mb-2" style={{ color: "#C9A84C" }}>WHAT WE OFFER</p>
-                    <h2 className="text-2xl md:text-3xl font-bold text-center mb-10" style={{ color: "#1B3A2D" }}>Our Amenities</h2>
+                <div className="py-16 md:py-20 px-6 md:px-10" style={{ backgroundColor: "var(--bg-tertiary)" }}>
+                    <p className="text-center text-xs font-semibold tracking-widest mb-2" style={{ color: "var(--accent)" }}>WHAT WE OFFER</p>
+                    <h2 className="text-2xl md:text-3xl font-bold text-center mb-10" style={{ color: "var(--text-primary)" }}>Our Amenities</h2>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
                         {amenities.map((item) => (
                             <div
                                 key={item.title}
                                 className="rounded-xl p-4 md:p-6 text-center hover:shadow-lg transition"
-                                style={{ backgroundColor: "#fff", border: "1px solid #C9A84C" }}
+                                style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border-color)" }}
                             >
                                 <div className="text-3xl md:text-4xl mb-3">{item.icon}</div>
-                                <h3 className="font-bold text-sm md:text-base mb-1" style={{ color: "#1B3A2D" }}>{item.title}</h3>
-                                <p className="text-xs md:text-sm" style={{ color: "#6b7c74" }}>{item.desc}</p>
+                                <h3 className="font-bold text-sm md:text-base mb-1" style={{ color: "var(--text-primary)" }}>{item.title}</h3>
+                                <p className="text-xs md:text-sm" style={{ color: "var(--text-secondary)" }}>{item.desc}</p>
                             </div>
                         ))}
                     </div>
                 </div>
 
                 {/* Gold Divider */}
-                <div style={{ backgroundColor: "#C9A84C", height: "3px" }} />
+                <div style={{ backgroundColor: "var(--accent)", height: "3px" }} />
 
                 {/* Weekly Menu */}
-                <div className="py-16 md:py-20 px-6 md:px-10" style={{ backgroundColor: "#1B3A2D" }}>
-                    <p className="text-center text-xs font-semibold tracking-widest mb-2" style={{ color: "#C9A84C" }}>
+                <div className="py-16 md:py-20 px-6 md:px-10" style={{ backgroundColor: "var(--bg-primary)" }}>
+                    <p className="text-center text-xs font-semibold tracking-widest mb-2" style={{ color: "var(--accent)" }}>
                         WHAT'S COOKING
                     </p>
-                    <h2 className="text-2xl md:text-3xl font-bold text-center mb-10" style={{ color: "#F7F1E8" }}>
+                    <h2 className="text-2xl md:text-3xl font-bold text-center mb-10" style={{ color: "var(--text-light)" }}>
                         Weekly Menu
                     </h2>
 
@@ -92,8 +92,8 @@ function LandingPage() {
                                     onClick={() => setMenuDay(index)}
                                     className="flex-shrink-0 px-4 py-2 rounded-full text-xs font-bold transition"
                                     style={menuDay === index
-                                        ? { backgroundColor: "#C9A84C", color: "#1B3A2D" }
-                                        : { backgroundColor: "#2D5A40", color: "#a0b8a8" }
+                                        ? { backgroundColor: "var(--accent)", color: "var(--text-primary)" }
+                                        : { backgroundColor: "var(--bg-secondary)", color: "var(--text-muted)" }
                                     }
                                 >
                                     {item.day.slice(0, 3)}
@@ -110,25 +110,25 @@ function LandingPage() {
                                 exit={{ opacity: 0, x: -40 }}
                                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                                 className="rounded-2xl overflow-hidden"
-                                style={{ border: "1px solid #C9A84C" }}
+                                style={{ border: "1px solid var(--border-color)" }}
                             >
                                 {/* Day Header */}
-                                <div className="px-6 py-4 flex justify-between items-center" style={{ backgroundColor: "#C9A84C" }}>
-                                    <h3 className="font-bold text-xl" style={{ color: "#1B3A2D" }}>
+                                <div className="px-6 py-4 flex justify-between items-center" style={{ backgroundColor: "var(--accent)" }}>
+                                    <h3 className="font-bold text-xl" style={{ color: "var(--text-primary)" }}>
                                         {weeklyMenu[menuDay].day}
                                     </h3>
                                     <div className="flex gap-2">
                                         <button
                                             onClick={() => setMenuDay((prev) => (prev - 1 + 7) % 7)}
                                             className="w-8 h-8 rounded-full flex items-center justify-center font-bold hover:opacity-80 transition"
-                                            style={{ backgroundColor: "#1B3A2D", color: "#C9A84C" }}
+                                            style={{ backgroundColor: "var(--bg-primary)", color: "var(--accent)" }}
                                         >
                                             ←
                                         </button>
                                         <button
                                             onClick={() => setMenuDay((prev) => (prev + 1) % 7)}
                                             className="w-8 h-8 rounded-full flex items-center justify-center font-bold hover:opacity-80 transition"
-                                            style={{ backgroundColor: "#1B3A2D", color: "#C9A84C" }}
+                                            style={{ backgroundColor: "var(--bg-primary)", color: "var(--accent)" }}
                                         >
                                             →
                                         </button>
@@ -136,7 +136,7 @@ function LandingPage() {
                                 </div>
 
                                 {/* Meals Grid */}
-                                <div className="grid grid-cols-1 md:grid-cols-3" style={{ backgroundColor: "#F7F1E8" }}>
+                                <div className="grid grid-cols-1 md:grid-cols-3" style={{ backgroundColor: "var(--bg-tertiary)" }}>
                                     {[
                                         { meal: "Breakfast", icon: "🌅", items: weeklyMenu[menuDay].breakfast },
                                         { meal: "Lunch", icon: "☀️", items: weeklyMenu[menuDay].lunch },
@@ -145,16 +145,16 @@ function LandingPage() {
                                         <div
                                             key={slot.meal}
                                             className="p-5"
-                                            style={{ borderRight: i < 2 ? "1px solid #E8DFC8" : "none" }}
+                                            style={{ borderRight: i < 2 ? "1px solid var(--border-subtle)" : "none" }}
                                         >
                                             <div className="flex items-center gap-2 mb-3">
                                                 <span className="text-lg">{slot.icon}</span>
-                                                <p className="font-bold text-sm" style={{ color: "#1B3A2D" }}>{slot.meal}</p>
+                                                <p className="font-bold text-sm" style={{ color: "var(--text-primary)" }}>{slot.meal}</p>
                                             </div>
                                             <ul className="flex flex-col gap-1.5">
                                                 {slot.items.map((item, idx) => (
-                                                    <li key={idx} className="text-sm flex items-center gap-2" style={{ color: "#6b7c74" }}>
-                                                        <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "#C9A84C" }} />
+                                                    <li key={idx} className="text-sm flex items-center gap-2" style={{ color: "var(--text-secondary)" }}>
+                                                        <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "var(--accent)" }} />
                                                         {item}
                                                     </li>
                                                 ))}
@@ -175,7 +175,7 @@ function LandingPage() {
                                     style={{
                                         width: menuDay === index ? "24px" : "8px",
                                         height: "8px",
-                                        backgroundColor: menuDay === index ? "#C9A84C" : "#2D5A40",
+                                        backgroundColor: menuDay === index ? "var(--accent)" : "var(--bg-secondary)",
                                     }}
                                 />
                             ))}
@@ -184,12 +184,12 @@ function LandingPage() {
                 </div>
 
                 {/* Gold Divider */}
-                <div style={{ backgroundColor: "#C9A84C", height: "3px" }} />
+                <div style={{ backgroundColor: "var(--accent)", height: "3px" }} />
 
                 {/* Available Rooms */}
-                <div id="rooms-section" className="py-16 md:py-20 px-6 md:px-10" style={{ backgroundColor: "#2D5A40" }}>
-                    <p className="text-center text-xs font-semibold tracking-widest mb-2" style={{ color: "#C9A84C" }}>FIND YOUR SPACE</p>
-                    <h2 className="text-2xl md:text-3xl font-bold text-center mb-10" style={{ color: "#F7F1E8" }}>Available Rooms</h2>
+                <div id="rooms-section" className="py-16 md:py-20 px-6 md:px-10" style={{ backgroundColor: "var(--bg-secondary)" }}>
+                    <p className="text-center text-xs font-semibold tracking-widest mb-2" style={{ color: "var(--accent)" }}>FIND YOUR SPACE</p>
+                    <h2 className="text-2xl md:text-3xl font-bold text-center mb-10" style={{ color: "var(--text-light)" }}>Available Rooms</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
                         {[
                             { type: "Single Occupancy", room: "Room 101", price: "25,000", img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80" },
@@ -199,18 +199,18 @@ function LandingPage() {
                             <div
                                 key={item.room}
                                 className="rounded-xl overflow-hidden hover:shadow-xl transition"
-                                style={{ backgroundColor: "#F7F1E8", border: "1px solid #C9A84C" }}
+                                style={{ backgroundColor: "var(--bg-tertiary)", border: "1px solid var(--border-color)" }}
                             >
                                 <img src={item.img} alt={item.type} className="w-full h-28 md:h-36 object-cover" />
                                 <div className="p-4 md:p-5">
-                                    <h3 className="font-bold mb-1 text-sm md:text-base" style={{ color: "#1B3A2D" }}>{item.type}</h3>
-                                    <p className="text-xs md:text-sm mb-4" style={{ color: "#6b7c74" }}>{item.room}</p>
+                                    <h3 className="font-bold mb-1 text-sm md:text-base" style={{ color: "var(--text-primary)" }}>{item.type}</h3>
+                                    <p className="text-xs md:text-sm mb-4" style={{ color: "var(--text-secondary)" }}>{item.room}</p>
                                     <div className="flex justify-between items-center">
-                                        <span className="font-bold text-lg md:text-xl" style={{ color: "#C9A84C" }}>
+                                        <span className="font-bold text-lg md:text-xl" style={{ color: "var(--accent)" }}>
                                             ₹{item.price}
-                                            <span className="text-xs md:text-sm font-normal" style={{ color: "#6b7c74" }}>/mo</span>
+                                            <span className="text-xs md:text-sm font-normal" style={{ color: "var(--text-secondary)" }}>/mo</span>
                                         </span>
-                                        <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ backgroundColor: "#1B3A2D", color: "#C9A84C" }}>
+                                        <span className="text-xs font-bold px-3 py-1 rounded-full" style={{ backgroundColor: "var(--bg-primary)", color: "var(--accent)" }}>
                                             Available
                                         </span>
                                     </div>
@@ -221,10 +221,10 @@ function LandingPage() {
                 </div>
 
                 {/* Gold Divider */}
-                <div style={{ backgroundColor: "#C9A84C", height: "3px" }} />
+                <div style={{ backgroundColor: "var(--accent)", height: "3px" }} />
 
                 {/* Contact + Owner + Map */}
-                <div className="py-16 md:py-20 px-6 md:px-10" style={{ backgroundColor: "#1B3A2D" }}>
+                <div className="py-16 md:py-20 px-6 md:px-10" style={{ backgroundColor: "var(--bg-primary)" }}>
                     <div className="max-w-6xl mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
 
@@ -233,31 +233,31 @@ function LandingPage() {
 
                                 {/* Know Your Owner */}
                                 <div>
-                                    <p className="text-xs font-semibold tracking-widest mb-2" style={{ color: "#C9A84C" }}>MEET THE OWNER</p>
-                                    <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{ color: "#F7F1E8" }}>Know Your Owner</h2>
+                                    <p className="text-xs font-semibold tracking-widest mb-2" style={{ color: "var(--accent)" }}>MEET THE OWNER</p>
+                                    <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{ color: "var(--text-light)" }}>Know Your Owner</h2>
                                     <div className="flex items-center gap-5 mb-6">
                                         <div className="relative flex-shrink-0">
-                                            <div className="absolute inset-0 rounded-full blur-lg opacity-40" style={{ backgroundColor: "#C9A84C" }} />
+                                            <div className="absolute inset-0 rounded-full blur-lg opacity-40" style={{ backgroundColor: "var(--accent)" }} />
                                             <img
                                                 src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80"
                                                 alt="Owner"
                                                 className="relative w-24 h-24 object-cover rounded-full border-2"
-                                                style={{ borderColor: "#C9A84C" }}
+                                                style={{ borderColor: "var(--border-color)" }}
                                             />
                                         </div>
                                         <div>
-                                            <h3 className="text-xl font-bold mb-3" style={{ color: "#F7F1E8" }}>Rajesh Kumar</h3>
+                                            <h3 className="text-xl font-bold mb-3" style={{ color: "var(--text-light)" }}>Rajesh Kumar</h3>
                                             <div className="flex flex-wrap gap-2">
-                                                <span className="px-3 py-1 rounded-full text-xs font-semibold" style={{ backgroundColor: "#244635", color: "#C9A84C", border: "1px solid #C9A84C" }}>
+                                                <span className="px-3 py-1 rounded-full text-xs font-semibold" style={{ backgroundColor: "#244635", color: "var(--accent)", border: "1px solid var(--border-color)" }}>
                                                     PG Owner
                                                 </span>
-                                                <span className="px-3 py-1 rounded-full text-xs font-semibold" style={{ backgroundColor: "#244635", color: "#C9A84C", border: "1px solid #C9A84C" }}>
+                                                <span className="px-3 py-1 rounded-full text-xs font-semibold" style={{ backgroundColor: "#244635", color: "var(--accent)", border: "1px solid var(--border-color)" }}>
                                                     8+ Years Experience
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
-                                    <p className="text-sm leading-relaxed max-w-xl" style={{ color: "#a0b8a8" }}>
+                                    <p className="text-sm leading-relaxed max-w-xl" style={{ color: "var(--text-muted)" }}>
                                         Managing PG accommodations in Bangalore for over 8 years.
                                         Focused on providing comfort, safety, cleanliness, and a
                                         friendly living experience for working professionals and students.
@@ -266,20 +266,20 @@ function LandingPage() {
 
                                 {/* Get In Touch */}
                                 <div>
-                                    <p className="text-xs font-semibold tracking-widest mb-2" style={{ color: "#C9A84C" }}>REACH OUT</p>
-                                    <h2 className="text-2xl md:text-3xl font-bold mb-6" style={{ color: "#F7F1E8" }}>Get in touch</h2>
+                                    <p className="text-xs font-semibold tracking-widest mb-2" style={{ color: "var(--accent)" }}>REACH OUT</p>
+                                    <h2 className="text-2xl md:text-3xl font-bold mb-6" style={{ color: "var(--text-light)" }}>Get in touch</h2>
                                     <div className="flex flex-col gap-4">
                                         <div>
-                                            <p className="text-xs mb-1" style={{ color: "#6b7c74" }}>Phone</p>
-                                            <p style={{ color: "#F7F1E8" }}>+91 9876543210</p>
+                                            <p className="text-xs mb-1" style={{ color: "var(--text-secondary)" }}>Phone</p>
+                                            <p style={{ color: "var(--text-light)" }}>+91 9876543210</p>
                                         </div>
                                         <div>
-                                            <p className="text-xs mb-1" style={{ color: "#6b7c74" }}>Email</p>
-                                            <p style={{ color: "#F7F1E8" }}>owner@gmail.com</p>
+                                            <p className="text-xs mb-1" style={{ color: "var(--text-secondary)" }}>Email</p>
+                                            <p style={{ color: "var(--text-light)" }}>owner@gmail.com</p>
                                         </div>
                                         <div>
-                                            <p className="text-xs mb-1" style={{ color: "#6b7c74" }}>Address</p>
-                                            <p className="text-sm leading-relaxed max-w-sm" style={{ color: "#a0b8a8" }}>
+                                            <p className="text-xs mb-1" style={{ color: "var(--text-secondary)" }}>Address</p>
+                                            <p className="text-sm leading-relaxed max-w-sm" style={{ color: "var(--text-muted)" }}>
                                                 12th Cross, Kaveri layout, Marathahalli Village, Bangalore
                                             </p>
                                         </div>
@@ -293,11 +293,11 @@ function LandingPage() {
                                 {/* Map */}
                                 <div
                                     className="rounded-2xl overflow-hidden shadow-2xl"
-                                    style={{ border: "1px solid #C9A84C", backgroundColor: "#F7F1E8" }}
+                                    style={{ border: "1px solid var(--border-color)", backgroundColor: "var(--bg-tertiary)" }}
                                 >
-                                    <div className="px-4 py-3" style={{ backgroundColor: "#1B3A2D", borderBottom: "1px solid #C9A84C" }}>
-                                        <h3 className="font-bold text-sm" style={{ color: "#C9A84C" }}>PG Location</h3>
-                                        <p className="text-xs mt-1" style={{ color: "#a0b8a8" }}>Marathahalli, Bangalore</p>
+                                    <div className="px-4 py-3" style={{ backgroundColor: "var(--bg-primary)", borderBottom: "1px solid var(--border-color)" }}>
+                                        <h3 className="font-bold text-sm" style={{ color: "var(--accent)" }}>PG Location</h3>
+                                        <p className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>Marathahalli, Bangalore</p>
                                     </div>
                                     <iframe
                                         title="PG Location"
@@ -312,7 +312,7 @@ function LandingPage() {
                                 <div className="flex flex-col sm:flex-row gap-4">
                                     <button
                                         onClick={() => navigate("/login")}
-                                        style={{ backgroundColor: "#C9A84C", color: "#1B3A2D" }}
+                                        style={{ backgroundColor: "var(--accent)", color: "var(--text-primary)" }}
                                         className="flex-1 px-8 py-3 rounded-lg text-base font-bold hover:opacity-90 transition"
                                     >
                                         Tenant Login
@@ -320,7 +320,7 @@ function LandingPage() {
                                     <button
                                         onClick={() => navigate("/owner/login")}
                                         className="flex-1 px-8 py-3 rounded-lg text-base font-bold border transition hover:opacity-90"
-                                        style={{ borderColor: "#C9A84C", color: "#C9A84C" }}
+                                        style={{ borderColor: "var(--border-color)", color: "var(--accent)" }}
                                     >
                                         Owner Login
                                     </button>
