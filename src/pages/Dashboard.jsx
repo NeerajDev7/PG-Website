@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { resetMonth } from '../store/tenantSlice'
 import Sidebar from '../components/Sidebar'
+import ComplaintsSection from '../components/ComplaintsSection'
 import toast from 'react-hot-toast'
 import PageTransition from '../components/PageTransition'
 
@@ -67,6 +68,12 @@ function Dashboard() {
                                 <p className='text-3xl md:text-4xl font-bold' style={{ color: 'var(--text-primary)' }}>{stat.value}</p>
                             </div>
                         ))}
+                    </div>
+
+                    {/* Complaints Section */}
+                    <div className='mt-8'>
+                        <h2 className='text-xl font-bold mb-4' style={{ color: 'var(--text-primary)' }}>Tenant Complaints</h2>
+                        <ComplaintsSection />
                     </div>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { logout } from '../utils/auth'
@@ -7,6 +8,7 @@ function Sidebar() {
     const navigate = useNavigate()
     const location = useLocation()
     const tenants = useSelector((state) => state.tenants.tenants)
+    const [menuOpen, setMenuOpen] = useState(false)
 
     const notifCount = tenants.filter(t => !t.paid).length
 
@@ -16,11 +18,17 @@ function Sidebar() {
         { label: 'Rooms', path: '/rooms' },
         { label: 'Notifications', path: '/notifications', badge: notifCount },
         { label: 'Menu Manager', path: '/menu-manager' },
+        { label: 'Analytics', path: '/analytics' },
     ]
 
     const handleLogout = () => {
         logout()
         navigate('/login')
+    }
+
+    const handleMobileNav = (path) => {
+        navigate(path)
+        setMenuOpen(false)
     }
 
     return (
@@ -33,7 +41,51 @@ function Sidebar() {
                 <h1 className='text-lg font-bold tracking-wide' style={{ color: 'var(--text-accent)' }}>
                     Social Co-Living PG
                 </h1>
+                <button
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    className='text-2xl focus:outline-none'
+                    style={{ color: 'var(--text-accent)' }}
+                    aria-label='Toggle menu'
+                >
+                    {menuOpen ? '✕' : '☰'}
+                </button>
             </div>
+
+            {/* Mobile Dropdown Menu */}
+            {menuOpen && (
+                <div
+                    className='md:hidden fixed top-14 left-0 right-0 z-40 shadow-lg'
+                    style={{ backgroundColor: 'var(--sidebar-bg)', borderBottom: '1px solid var(--sidebar-border)' }}
+                >
+                    <nav className='flex flex-col p-3 gap-1'>
+                        {links.map((link) => (
+                            <button
+                                key={link.path}
+                                onClick={() => handleMobileNav(link.path)}
+                                className='text-left px-4 py-3 rounded-lg transition flex justify-between items-center'
+                                style={location.pathname === link.path
+                                    ? { backgroundColor: 'var(--sidebar-active-bg)', color: 'var(--sidebar-active-text)', fontWeight: '700' }
+                                    : { color: 'var(--sidebar-text)' }
+                                }
+                            >
+                                {link.label}
+                                {link.badge > 0 && (
+                                    <span className='text-xs font-bold px-2 py-0.5 rounded-full' style={{ backgroundColor: 'var(--badge-bg)', color: 'var(--badge-text)' }}>
+                                        {link.badge}
+                                    </span>
+                                )}
+                            </button>
+                        ))}
+                        <button
+                            onClick={() => { handleLogout(); setMenuOpen(false) }}
+                            className='text-left px-4 py-3 rounded-lg font-semibold mt-1'
+                            style={{ color: 'var(--danger)', border: '1px solid var(--danger)' }}
+                        >
+                            Logout
+                        </button>
+                    </nav>
+                </div>
+            )}
 
             {/* Desktop Sidebar */}
             <div
