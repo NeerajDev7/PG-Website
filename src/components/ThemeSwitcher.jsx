@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 
 const themes = [
-    { value: 'default', label: 'Luxury Green', emoji: '🌿' },
-    { value: 'dark', label: 'Dark Mode', emoji: '🌑' },
-    { value: 'purple', label: 'Ice Cold', emoji: '❄️' },
-    { value: 'ocean', label: 'Desert Night', emoji: '🏜️' },
+    { value: 'default',      label: 'Luxury Green', emoji: '🌿' },
+    { value: 'midnight',     label: 'Midnight',     emoji: '🌑' },
+    { value: 'sunrise',  label: 'Sun rise',  emoji: '🌲' },
+    { value: 'ember-luxe',  label: 'Ember-luxe',  emoji: '🌲' },
+    { value: 'graphite',    label: 'Graphite',    emoji: '🏜️' },
+    { value: 'nebula',       label: 'Nebula',       emoji: '🔮' },
 ]
 
 function ThemeSwitcher() {

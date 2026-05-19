@@ -22,7 +22,6 @@ function TenantsPage() {
     tenant: null,
   });
 
-  // Extract floor safely
   const getFloor = (room) => {
     if (!room) return null;
 
@@ -33,19 +32,16 @@ function TenantsPage() {
     return Math.floor(Number(roomNumber) / 100).toString();
   };
 
-  // Unique room list
   const uniqueRooms = useMemo(() => {
     return [...new Set(tenants.map((t) => t.room).filter(Boolean))].sort();
   }, [tenants]);
 
-  // Unique floor list
   const uniqueFloors = useMemo(() => {
     return [
       ...new Set(tenants.map((t) => getFloor(t.room)).filter(Boolean)),
     ].sort((a, b) => Number(a) - Number(b));
   }, [tenants]);
 
-  // Filter tenants
   const filteredTenants = useMemo(() => {
     return tenants.filter((tenant) => {
       const name = tenant.name?.toLowerCase() || "";
@@ -115,13 +111,16 @@ function TenantsPage() {
   };
 
   const selectStyle = {
-    border: "1px solid #C9A84C",
-    backgroundColor: "#fff",
-    color: "#1B3A2D",
+    border: "1px solid var(--border-color)",
+    backgroundColor: "var(--bg-card)",
+    color: "var(--text-primary)",
   };
 
   return (
-    <div className="flex min-h-screen" style={{ backgroundColor: "#F7F1E8" }}>
+    <div
+      className="flex min-h-screen"
+      style={{ backgroundColor: "var(--bg-tertiary)" }}
+    >
       <Sidebar />
 
       <div className="flex-1 p-4 md:p-8 mt-16 md:mt-0 overflow-x-hidden">
@@ -138,12 +137,15 @@ function TenantsPage() {
           <div>
             <h1
               className="text-2xl md:text-3xl font-bold"
-              style={{ color: "#1B3A2D" }}
+              style={{ color: "var(--text-primary)" }}
             >
               Tenants
             </h1>
 
-            <p className="text-sm mt-1" style={{ color: "#6b7c74" }}>
+            <p
+              className="text-sm mt-1"
+              style={{ color: "var(--text-secondary)" }}
+            >
               Showing {filteredTenants.length} of {tenants.length} tenants
             </p>
           </div>
@@ -156,9 +158,9 @@ function TenantsPage() {
               onChange={(e) => setSearch(e.target.value)}
               className="w-full sm:w-72 px-4 py-2 rounded-lg text-sm focus:outline-none"
               style={{
-                border: "1px solid #C9A84C",
-                backgroundColor: "#fff",
-                color: "#1B3A2D",
+                border: "1px solid var(--border-color)",
+                backgroundColor: "var(--bg-card)",
+                color: "var(--text-primary)",
               }}
             />
 
@@ -166,9 +168,9 @@ function TenantsPage() {
               onClick={() => navigate("/add-tenant")}
               className="px-5 py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition whitespace-nowrap"
               style={{
-                backgroundColor: "#1B3A2D",
-                color: "#C9A84C",
-                border: "2px solid #C9A84C",
+                backgroundColor: "var(--accent)",
+                color: "var(--text-light)",
+                border: "2px solid var(--accent)",
               }}
             >
               + Add Tenant
@@ -180,11 +182,10 @@ function TenantsPage() {
         <div
           className="flex flex-wrap items-center gap-3 mb-6 p-4 rounded-xl"
           style={{
-            backgroundColor: "#fff",
-            border: "1px solid #E8DFC8",
+            backgroundColor: "var(--bg-card)",
+            border: "1px solid var(--border-subtle)",
           }}
         >
-          {/* Floor Filter */}
           <select
             value={filterFloor}
             onChange={(e) => {
@@ -203,7 +204,6 @@ function TenantsPage() {
             ))}
           </select>
 
-          {/* Room Filter */}
           <select
             value={filterRoom}
             onChange={(e) => setFilterRoom(e.target.value)}
@@ -222,7 +222,6 @@ function TenantsPage() {
             ))}
           </select>
 
-          {/* Status Filter */}
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
@@ -234,15 +233,14 @@ function TenantsPage() {
             <option value="pending">Pending</option>
           </select>
 
-          {/* Clear Filters */}
           {hasActiveFilters && (
             <button
               onClick={clearFilters}
               className="px-4 py-2 rounded-lg text-sm font-semibold hover:opacity-80 transition"
               style={{
-                backgroundColor: "#fff",
-                color: "#dc2626",
-                border: "1px solid #dc2626",
+                backgroundColor: "var(--bg-card)",
+                color: "var(--danger)",
+                border: "1px solid var(--danger)",
               }}
             >
               Clear Filters
@@ -250,7 +248,7 @@ function TenantsPage() {
           )}
         </div>
 
-        {/* Active Filter Chips */}
+        {/* Active Filters */}
         {(filterFloor !== "all" ||
           filterRoom !== "all" ||
           filterStatus !== "all") && (
@@ -259,8 +257,8 @@ function TenantsPage() {
               <span
                 className="px-3 py-1 rounded-full text-xs font-bold"
                 style={{
-                  backgroundColor: "#1B3A2D",
-                  color: "#C9A84C",
+                  backgroundColor: "var(--badge-bg)",
+                  color: "var(--badge-text)",
                 }}
               >
                 Floor {filterFloor}
@@ -271,8 +269,8 @@ function TenantsPage() {
               <span
                 className="px-3 py-1 rounded-full text-xs font-bold"
                 style={{
-                  backgroundColor: "#1B3A2D",
-                  color: "#C9A84C",
+                  backgroundColor: "var(--badge-bg)",
+                  color: "var(--badge-text)",
                 }}
               >
                 {filterRoom}
@@ -283,8 +281,8 @@ function TenantsPage() {
               <span
                 className="px-3 py-1 rounded-full text-xs font-bold"
                 style={{
-                  backgroundColor: "#1B3A2D",
-                  color: "#C9A84C",
+                  backgroundColor: "var(--badge-bg)",
+                  color: "var(--badge-text)",
                 }}
               >
                 {filterStatus === "paid" ? "Paid" : "Pending"}
@@ -307,21 +305,24 @@ function TenantsPage() {
                 key={tenant.id}
                 className="rounded-xl p-5 shadow-sm"
                 style={{
-                  backgroundColor: "#fff",
-                  border: "1px solid #C9A84C",
+                  backgroundColor: "var(--bg-card)",
+                  border: "1px solid var(--border-color)",
                 }}
               >
                 <div className="flex justify-between items-start mb-4 gap-3">
                   <div>
                     <p
                       className="font-bold text-lg cursor-pointer hover:underline"
-                      style={{ color: "#1B3A2D" }}
+                      style={{ color: "var(--text-primary)" }}
                       onClick={() => navigate(`/tenant/${tenant.id}`)}
                     >
                       {tenant.name}
                     </p>
 
-                    <p className="text-sm" style={{ color: "#6b7c74" }}>
+                    <p
+                      className="text-sm"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
                       {tenant.room}
                     </p>
                   </div>
@@ -331,13 +332,14 @@ function TenantsPage() {
                     style={
                       tenant.paid
                         ? {
-                            backgroundColor: "#2D5A40",
-                            color: "#C9A84C",
+                            backgroundColor: "var(--paid-bg)",
+                            color: "var(--paid-text)",
                           }
                         : {
-                            backgroundColor: "#fff3cd",
-                            color: "#856404",
-                            border: "1px solid #ffc107",
+                            backgroundColor: "var(--pending-bg)",
+                            color: "var(--pending-text)",
+                            border:
+                              "1px solid var(--pending-border)",
                           }
                     }
                   >
@@ -346,11 +348,17 @@ function TenantsPage() {
                 </div>
 
                 <div className="space-y-1 mb-4">
-                  <p className="text-sm" style={{ color: "#6b7c74" }}>
+                  <p
+                    className="text-sm"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
                     Floor: {getFloor(tenant.room)}
                   </p>
 
-                  <p className="font-semibold" style={{ color: "#1B3A2D" }}>
+                  <p
+                    className="font-semibold"
+                    style={{ color: "var(--text-primary)" }}
+                  >
                     ₹{tenant.rent}/month
                   </p>
                 </div>
@@ -361,8 +369,8 @@ function TenantsPage() {
                       onClick={() => handleMarkPaid(tenant)}
                       className="flex-1 py-2 rounded-lg font-semibold text-sm"
                       style={{
-                        backgroundColor: "#2D5A40",
-                        color: "#C9A84C",
+                        backgroundColor: "var(--paid-bg)",
+                        color: "var(--paid-text)",
                       }}
                     >
                       Mark Paid
@@ -373,9 +381,9 @@ function TenantsPage() {
                     onClick={() => handleRemoveClick(tenant)}
                     className="flex-1 py-2 rounded-lg font-semibold text-sm"
                     style={{
-                      backgroundColor: "#fff",
-                      color: "#dc2626",
-                      border: "1px solid #dc2626",
+                      backgroundColor: "var(--bg-card)",
+                      color: "var(--danger)",
+                      border: "1px solid var(--danger)",
                     }}
                   >
                     Remove
@@ -387,31 +395,48 @@ function TenantsPage() {
         </div>
 
         {/* Desktop Table */}
-        {/* Desktop Table */}
         <div
           className="hidden md:block rounded-xl overflow-hidden shadow-sm"
-          style={{ border: "1px solid #C9A84C" }}
+          style={{
+            border: "1px solid var(--border-color)",
+            backgroundColor: "var(--bg-card)",
+          }}
         >
           <table className="w-full">
             <thead>
-              <tr style={{ backgroundColor: "#1B3A2D" }}>
-                <th className="text-left px-6 py-4 text-sm font-semibold text-[#C9A84C]">
+              <tr style={{ backgroundColor: "var(--sidebar-bg)" }}>
+                <th
+                  className="text-left px-6 py-4 text-sm font-semibold"
+                  style={{ color: "var(--text-accent)" }}
+                >
                   Name
                 </th>
 
-                <th className="text-left px-6 py-4 text-sm font-semibold text-[#C9A84C]">
+                <th
+                  className="text-left px-6 py-4 text-sm font-semibold"
+                  style={{ color: "var(--text-accent)" }}
+                >
                   Room
                 </th>
 
-                <th className="text-left px-6 py-4 text-sm font-semibold text-[#C9A84C]">
+                <th
+                  className="text-left px-6 py-4 text-sm font-semibold"
+                  style={{ color: "var(--text-accent)" }}
+                >
                   Rent
                 </th>
 
-                <th className="text-left px-6 py-4 text-sm font-semibold text-[#C9A84C]">
+                <th
+                  className="text-left px-6 py-4 text-sm font-semibold"
+                  style={{ color: "var(--text-accent)" }}
+                >
                   Status
                 </th>
 
-                <th className="text-left px-6 py-4 text-sm font-semibold text-[#C9A84C]">
+                <th
+                  className="text-left px-6 py-4 text-sm font-semibold"
+                  style={{ color: "var(--text-accent)" }}
+                >
                   Actions
                 </th>
               </tr>
@@ -433,25 +458,34 @@ function TenantsPage() {
                   <tr
                     key={tenant.id}
                     style={{
-                      backgroundColor: index % 2 === 0 ? "#fff" : "#F7F1E8",
-                      borderBottom: "1px solid #E8DFC8",
+                      backgroundColor:
+                        index % 2 === 0
+                          ? "var(--bg-card)"
+                          : "var(--bg-tertiary)",
+                      borderBottom:
+                        "1px solid var(--border-subtle)",
                     }}
                   >
                     <td
                       className="px-6 py-4 font-medium cursor-pointer hover:underline"
-                      style={{ color: "#1B3A2D" }}
-                      onClick={() => navigate(`/tenant/${tenant.id}`)}
+                      style={{ color: "var(--text-primary)" }}
+                      onClick={() =>
+                        navigate(`/tenant/${tenant.id}`)
+                      }
                     >
                       {tenant.name}
                     </td>
 
-                    <td className="px-6 py-4" style={{ color: "#6b7c74" }}>
+                    <td
+                      className="px-6 py-4"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
                       {tenant.room}
                     </td>
 
                     <td
                       className="px-6 py-4 font-semibold"
-                      style={{ color: "#1B3A2D" }}
+                      style={{ color: "var(--text-primary)" }}
                     >
                       ₹{tenant.rent}
                     </td>
@@ -462,13 +496,17 @@ function TenantsPage() {
                         style={
                           tenant.paid
                             ? {
-                                backgroundColor: "#2D5A40",
-                                color: "#C9A84C",
+                                backgroundColor:
+                                  "var(--paid-bg)",
+                                color: "var(--paid-text)",
                               }
                             : {
-                                backgroundColor: "#fff3cd",
-                                color: "#856404",
-                                border: "1px solid #ffc107",
+                                backgroundColor:
+                                  "var(--pending-bg)",
+                                color:
+                                  "var(--pending-text)",
+                                border:
+                                  "1px solid var(--pending-border)",
                               }
                         }
                       >
@@ -479,11 +517,14 @@ function TenantsPage() {
                     <td className="px-6 py-4 flex gap-2">
                       {!tenant.paid && (
                         <button
-                          onClick={() => handleMarkPaid(tenant)}
+                          onClick={() =>
+                            handleMarkPaid(tenant)
+                          }
                           className="text-sm px-4 py-1.5 rounded-lg font-semibold hover:opacity-80 transition"
                           style={{
-                            backgroundColor: "#2D5A40",
-                            color: "#C9A84C",
+                            backgroundColor:
+                              "var(--paid-bg)",
+                            color: "var(--paid-text)",
                           }}
                         >
                           Mark Paid
@@ -491,12 +532,16 @@ function TenantsPage() {
                       )}
 
                       <button
-                        onClick={() => handleRemoveClick(tenant)}
+                        onClick={() =>
+                          handleRemoveClick(tenant)
+                        }
                         className="text-sm px-4 py-1.5 rounded-lg font-semibold hover:opacity-80 transition"
                         style={{
-                          backgroundColor: "#fff",
-                          color: "#dc2626",
-                          border: "1px solid #dc2626",
+                          backgroundColor:
+                            "var(--bg-card)",
+                          color: "var(--danger)",
+                          border:
+                            "1px solid var(--danger)",
                         }}
                       >
                         Remove
@@ -518,11 +563,17 @@ function EmptyState({ hasFilters, search, navigate }) {
     <div className="flex flex-col items-center justify-center py-16">
       <p className="text-5xl mb-4">🏠</p>
 
-      <p className="font-bold text-lg mb-1" style={{ color: "#1B3A2D" }}>
+      <p
+        className="font-bold text-lg mb-1"
+        style={{ color: "var(--text-primary)" }}
+      >
         No tenants found
       </p>
 
-      <p className="text-sm mb-6" style={{ color: "#6b7c74" }}>
+      <p
+        className="text-sm mb-6"
+        style={{ color: "var(--text-secondary)" }}
+      >
         {search || hasFilters
           ? "Try changing filters or search"
           : "Add your first tenant to get started"}
@@ -533,9 +584,9 @@ function EmptyState({ hasFilters, search, navigate }) {
           onClick={() => navigate("/add-tenant")}
           className="px-6 py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition"
           style={{
-            backgroundColor: "#1B3A2D",
-            color: "#C9A84C",
-            border: "2px solid #C9A84C",
+            backgroundColor: "var(--accent)",
+            color: "var(--text-light)",
+            border: "2px solid var(--accent)",
           }}
         >
           + Add Tenant

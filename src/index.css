@@ -48,148 +48,265 @@
     --amenities-bg: #F7F1E8;
 }
 
-/* ===== DARK MODE ===== */
-[data-theme="dark"] {
-    --bg-primary: #0f172a;
-    --bg-secondary: #1e293b;
-    --bg-tertiary: #1e293b;
-    --bg-card: #1e293b;
-    --bg-input: #0f172a;
+/* ===== MIDNIGHT ===== */
+[data-theme="midnight"] {
+    --bg-primary: #0A0F1C;
+    --bg-secondary: #111827;
+    --bg-tertiary: #161F2F;
+    --bg-card: #121826;
+    --bg-input: #0F172A;
 
-    --accent: #f59e0b;
-    --accent-hover: #d97706;
+    --accent: #3B82F6;
+    --accent-hover: #2563EB;
 
-    --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
-    --text-light: #f1f5f9;
-    --text-accent: #f59e0b;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --text-light: #FFFFFF;
+    --text-accent: #60A5FA;
 
-    --border-color: #f59e0b;
-    --border-subtle: #334155;
-    --divider: #334155;
+    --border-color: #334155;
+    --border-subtle: #1E293B;
+    --divider: #1E293B;
 
-    --sidebar-bg: #0f172a;
-    --sidebar-text: #94a3b8;
-    --sidebar-active-bg: #f59e0b;
-    --sidebar-active-text: #0f172a;
-    --sidebar-hover-bg: #1e293b;
-    --sidebar-border: #1e293b;
+    --sidebar-bg: #0A0F1C;
+    --sidebar-text: #94A3B8;
+    --sidebar-active-bg: #2563EB;
+    --sidebar-active-text: #FFFFFF;
+    --sidebar-hover-bg: #172033;
+    --sidebar-border: #172033;
 
-    --badge-bg: #f59e0b;
-    --badge-text: #0f172a;
+    --badge-bg: #2563EB;
+    --badge-text: #FFFFFF;
 
-    --paid-bg: #166534;
-    --paid-text: #f59e0b;
-    --pending-bg: #422006;
-    --pending-text: #fbbf24;
-    --pending-border: #d97706;
+    --paid-bg: #052E1B;
+    --paid-text: #4ADE80;
+    --pending-bg: #3B2500;
+    --pending-text: #FBBF24;
+    --pending-border: #F59E0B;
 
-    --danger: #ef4444;
-    --danger-bg: #1e293b;
+    --danger: #F87171;
+    --danger-bg: #2A1215;
 
-    --navbar-bg: #0f172a;
-    --hero-bg: #0f172a;
-    --footer-bg: #0f172a;
-    --menu-bg: #0f172a;
-    --rooms-section-bg: #1e293b;
-    --amenities-bg: #1e293b;
+    --navbar-bg: #0A0F1C;
+    --hero-bg: linear-gradient(135deg, #0A0F1C, #111827);
+    --footer-bg: #0A0F1C;
+    --menu-bg: #0A0F1C;
+    --rooms-section-bg: #111827;
+    --amenities-bg: #161F2F;
 }
 
-/* ===== ICE COLD (was Royal Purple) ===== */
-[data-theme="purple"] {
-    --bg-primary: #8458B3;
-    --bg-secondary: #a28089;
-    --bg-tertiary: #e5eaf5;
-    --bg-card: #ffffff;
-    --bg-input: #e5eaf5;
+/* ===== SUNRISE THEME ===== */
+[data-theme="sunrise"] {
+    --bg-primary: #FFF4E8;
+    --bg-secondary: #FFE8CC;
+    --bg-tertiary: #FFF9F2;
+    --bg-card: #FFFFFF;
+    --bg-input: #FFF7ED;
 
-    --accent: #a0d2eb;
-    --accent-hover: #7bbdd8;
+    --accent: #FF7A00;
+    --accent-hover: #E56700;
 
-    --text-primary: #8458B3;
-    --text-secondary: #a28089;
-    --text-muted: #d0bdf4;
-    --text-light: #e5eaf5;
-    --text-accent: #a0d2eb;
+    --text-primary: #5B341C;
+    --text-secondary: #8B5E3C;
+    --text-muted: #C08A62;
+    --text-light: #FFFFFF;
+    --text-accent: #FF7A00;
 
-    --border-color: #a0d2eb;
-    --border-subtle: #d0bdf4;
-    --divider: #e5eaf5;
+    --border-color: #FFB067;
+    --border-subtle: #FFD9B3;
+    --divider: #FFE7CF;
 
-    --sidebar-bg: #8458B3;
-    --sidebar-text: #d0bdf4;
-    --sidebar-active-bg: #a0d2eb;
-    --sidebar-active-text: #8458B3;
-    --sidebar-hover-bg: #a28089;
-    --sidebar-border: #a28089;
+    --sidebar-bg: #B54708;
+    --sidebar-text: #FFE7CF;
+    --sidebar-active-bg: #FF9A3D;
+    --sidebar-active-text: #5B341C;
+    --sidebar-hover-bg: #C75A14;
+    --sidebar-border: #C75A14;
 
-    --badge-bg: #a0d2eb;
-    --badge-text: #8458B3;
+    --badge-bg: #FF7A00;
+    --badge-text: #FFFFFF;
 
-    --paid-bg: #a28089;
-    --paid-text: #a0d2eb;
-    --pending-bg: #fff7ed;
-    --pending-text: #9a3412;
-    --pending-border: #fb923c;
+    --paid-bg: #DCFCE7;
+    --paid-text: #166534;
 
-    --danger: #dc2626;
-    --danger-bg: #fff;
+    --pending-bg: #FEF3C7;
+    --pending-text: #92400E;
+    --pending-border: #F59E0B;
 
-    --navbar-bg: #8458B3;
-    --hero-bg: #8458B3;
-    --footer-bg: #8458B3;
-    --menu-bg: #8458B3;
-    --rooms-section-bg: #a28089;
-    --amenities-bg: #e5eaf5;
+    --danger: #DC2626;
+    --danger-bg: #FFF1F1;
+
+    --navbar-bg: #B54708;
+
+    --hero-bg: linear-gradient(
+        135deg,
+        #FFF4E8 0%,
+        #FFE0B2 35%,
+        #FFB067 70%,
+        #FF7A00 100%
+    );
+
+    --footer-bg: #B54708;
+    --menu-bg: #B54708;
+
+    --rooms-section-bg: #FFE8CC;
+    --amenities-bg: #FFF9F2;
 }
 
-/* ===== DESERT NIGHT (was Ocean Blue) ===== */
-[data-theme="ocean"] {
-    --bg-primary: #12343b;
-    --bg-secondary: #2d545e;
-    --bg-tertiary: #e5eaf5;
-    --bg-card: #ffffff;
-    --bg-input: #e5eaf5;
+[data-theme="graphite"] {
+    --bg-primary: #1E1E22;
+    --bg-secondary: #2A2A30;
+    --bg-tertiary: #34343C;
+    --bg-card: #2D2D34;
+    --bg-input: #25252B;
 
-    --accent: #e1b382;
-    --accent-hover: #c89666;
+    --accent: #D4A017;
+    --accent-hover: #B98B11;
 
-    --text-primary: #12343b;
-    --text-secondary: #2d545e;
-    --text-muted: #c89666;
-    --text-light: #e5eaf5;
-    --text-accent: #e1b382;
+    --text-primary: #F5F5F5;
+    --text-secondary: #B0B0B8;
+    --text-muted: #7C7C85;
+    --text-light: #FFFFFF;
+    --text-accent: #D4A017;
 
-    --border-color: #e1b382;
-    --border-subtle: #c89666;
-    --divider: #e1b382;
+    --border-color: #3D3D46;
+    --border-subtle: #33333B;
+    --divider: #383840;
 
-    --sidebar-bg: #12343b;
-    --sidebar-text: #c89666;
-    --sidebar-active-bg: #e1b382;
-    --sidebar-active-text: #12343b;
-    --sidebar-hover-bg: #2d545e;
-    --sidebar-border: #2d545e;
+    --sidebar-bg: #18181C;
+    --sidebar-text: #B0B0B8;
+    --sidebar-active-bg: #D4A017;
+    --sidebar-active-text: #1E1E22;
+    --sidebar-hover-bg: #2A2A30;
+    --sidebar-border: #2F2F36;
 
-    --badge-bg: #e1b382;
-    --badge-text: #12343b;
+    --badge-bg: #D4A017;
+    --badge-text: #1E1E22;
 
-    --paid-bg: #2d545e;
-    --paid-text: #e1b382;
-    --pending-bg: #fff7ed;
-    --pending-text: #9a3412;
-    --pending-border: #fb923c;
+    --paid-bg: #163A2D;
+    --paid-text: #6EE7B7;
 
-    --danger: #dc2626;
-    --danger-bg: #fff;
+    --pending-bg: #4A3412;
+    --pending-text: #FCD34D;
+    --pending-border: #D97706;
 
-    --navbar-bg: #12343b;
-    --hero-bg: #12343b;
-    --footer-bg: #12343b;
-    --menu-bg: #12343b;
-    --rooms-section-bg: #2d545e;
-    --amenities-bg: #e5eaf5;
+    --danger: #EF4444;
+    --danger-bg: #3A1F1F;
+
+    --navbar-bg: #18181C;
+    --hero-bg: #1E1E22;
+    --footer-bg: #18181C;
+    --menu-bg: #18181C;
+
+    --rooms-section-bg: #25252B;
+    --amenities-bg: #2D2D34;
+}
+
+/* ===== NEBULA ===== */
+[data-theme="nebula"] {
+    --bg-primary: #0B0B1A;
+    --bg-secondary: #14142B;
+    --bg-tertiary: #1F1F3D;
+    --bg-card: #181830;
+    --bg-input: #101024;
+
+    --accent: #7C4DFF;
+    --accent-hover: #6A3EF0;
+
+    --text-primary: #F3F4FF;
+    --text-secondary: #B8B9D9;
+    --text-muted: #7E81A8;
+    --text-light: #FFFFFF;
+    --text-accent: #9D7BFF;
+
+    --border-color: #7C4DFF;
+    --border-subtle: #2B2B4A;
+    --divider: #242445;
+
+    --sidebar-bg: #0D0D20;
+    --sidebar-text: #B8B9D9;
+    --sidebar-active-bg: #7C4DFF;
+    --sidebar-active-text: #FFFFFF;
+    --sidebar-hover-bg: #1B1B35;
+    --sidebar-border: #1A1A33;
+
+    --badge-bg: #7C4DFF;
+    --badge-text: #FFFFFF;
+
+    --paid-bg: #123B2F;
+    --paid-text: #6EE7B7;
+    --pending-bg: #3B2A12;
+    --pending-text: #FFD166;
+    --pending-border: #F59E0B;
+
+    --danger: #FF5C7A;
+    --danger-bg: #2A1020;
+
+    --navbar-bg: #0B0B1A;
+    --hero-bg: linear-gradient(135deg, #0B0B1A, #1B1440);
+    --footer-bg: #0B0B1A;
+    --menu-bg: #101024;
+    --rooms-section-bg: #14142B;
+    --amenities-bg: #181830;
+}
+
+/* ===== EMBER LUXE ===== */
+[data-theme="ember-luxe"] {
+    --bg-primary: #050302;
+    --bg-secondary: #0F0703;
+    --bg-tertiary: #140A05;
+    --bg-card: #0B0502;
+    --bg-input: #120803;
+
+    --accent: #F28C28;
+    --accent-hover: #FF9F43;
+
+    --text-primary: #F7E7D3;
+    --text-secondary: #C6A98B;
+    --text-muted: #8B6B52;
+    --text-light: #FFF8F1;
+    --text-accent: #FF9A3C;
+
+    --border-color: #5B2D12;
+    --border-subtle: #2A1408;
+    --divider: #1D0D05;
+
+    --sidebar-bg: #050302;
+    --sidebar-text: #B98D68;
+    --sidebar-active-bg: #E57A1F;
+    --sidebar-active-text: #140A05;
+    --sidebar-hover-bg: #1A0C04;
+    --sidebar-border: #1A0C04;
+
+    --badge-bg: #E57A1F;
+    --badge-text: #140A05;
+
+    --paid-bg: #12351F;
+    --paid-text: #5BE38D;
+
+    --pending-bg: #3A2108;
+    --pending-text: #FFB547;
+    --pending-border: #D97706;
+
+    --danger: #FF5A5A;
+    --danger-bg: #2A0F0F;
+
+    --navbar-bg: #050302;
+
+    --hero-bg: linear-gradient(
+        135deg,
+        #050302 0%,
+        #120803 35%,
+        #1F0E05 70%,
+        #2A1206 100%
+    );
+
+    --footer-bg: #050302;
+    --menu-bg: #050302;
+
+    --rooms-section-bg: #0F0703;
+    --amenities-bg: #140A05;
 }
 
 body {
