@@ -12,7 +12,7 @@ function MenuManagerPage() {
     const menu = useSelector((state) => state.tenants.menu)
 
     const [selectedDay, setSelectedDay] = useState(0)
-    const [editing, setEditing] = useState(null) // { mealType: 'breakfast' }
+    const [editing, setEditing] = useState(null)
     const [editText, setEditText] = useState('')
 
     const handleEdit = (mealType) => {
@@ -49,34 +49,68 @@ function MenuManagerPage() {
 
     return (
         <PageTransition>
-            <div className='flex min-h-screen' style={{ backgroundColor: 'var(--bg-tertiary)' }}>
+            <div
+                className='flex min-h-screen overflow-x-hidden'
+                style={{ backgroundColor: 'var(--bg-tertiary)' }}
+            >
                 <Sidebar />
-                <div className='flex-1 p-4 md:p-8 mt-16 md:mt-0'>
 
-                    <div className='flex justify-between items-center mb-8'>
+                <div className='flex-1 p-4 md:p-8 mt-20 md:mt-0 overflow-x-hidden'>
+
+                    {/* HEADER */}
+                    <div className='flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8'>
+
                         <div>
-                            <h1 className='text-2xl md:text-3xl font-bold' style={{ color: 'var(--text-primary)' }}>Menu Manager</h1>
-                            <p className='mt-1 text-sm' style={{ color: 'var(--text-secondary)' }}>Edit weekly meal menu shown on landing page</p>
+                            <h1
+                                className='text-2xl md:text-3xl font-bold'
+                                style={{ color: 'var(--text-primary)' }}
+                            >
+                                Menu Manager
+                            </h1>
+
+                            <p
+                                className='mt-1 text-sm'
+                                style={{ color: 'var(--text-secondary)' }}
+                            >
+                                Edit weekly meal menu shown on landing page
+                            </p>
                         </div>
+
                         <button
                             onClick={() => navigate('/dashboard')}
-                            className='px-4 py-2 rounded-lg text-sm font-semibold hover:opacity-80 transition'
-                            style={{ backgroundColor: 'var(--bg-card)', color: 'var(--text-primary)', border: '1px solid var(--border-color)' }}
+                            className='w-fit px-4 py-2 rounded-lg text-sm font-semibold hover:opacity-80 transition'
+                            style={{
+                                backgroundColor: 'var(--bg-card)',
+                                color: 'var(--text-primary)',
+                                border: '1px solid var(--border-color)'
+                            }}
                         >
                             ← Back
                         </button>
                     </div>
 
-                    {/* Day Selector */}
-                    <div className='flex gap-2 overflow-x-auto pb-3 mb-8'>
+                    {/* DAY SELECTOR */}
+                    <div className='flex gap-2 overflow-x-auto pb-3 mb-8 scrollbar-hide'>
                         {menu.map((item, index) => (
                             <button
                                 key={item.day}
-                                onClick={() => { setSelectedDay(index); setEditing(null) }}
-                                className='flex-shrink-0 px-5 py-2 rounded-full text-sm font-bold transition'
-                                style={selectedDay === index
-                                    ? { backgroundColor: 'var(--bg-primary)', color: 'var(--accent)', border: '2px solid var(--border-color)' }
-                                    : { backgroundColor: 'var(--bg-card)', color: 'var(--text-primary)', border: '1px solid var(--border-color)' }
+                                onClick={() => {
+                                    setSelectedDay(index)
+                                    setEditing(null)
+                                }}
+                                className='flex-shrink-0 px-5 py-2 rounded-full text-sm font-bold transition whitespace-nowrap'
+                                style={
+                                    selectedDay === index
+                                        ? {
+                                            backgroundColor: 'var(--bg-primary)',
+                                            color: 'var(--accent)',
+                                            border: '2px solid var(--border-color)'
+                                        }
+                                        : {
+                                            backgroundColor: 'var(--bg-card)',
+                                            color: 'var(--text-primary)',
+                                            border: '1px solid var(--border-color)'
+                                        }
                                 }
                             >
                                 {item.day}
@@ -84,25 +118,44 @@ function MenuManagerPage() {
                         ))}
                     </div>
 
-                    {/* Meal Cards */}
-                    <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+                    {/* MEAL CARDS */}
+                    <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
+
                         {mealSlots.map((slot) => (
+
                             <div
                                 key={slot.key}
-                                className='rounded-xl p-6 shadow-sm'
-                                style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-color)' }}
+                                className='rounded-2xl p-5 md:p-6 shadow-sm'
+                                style={{
+                                    backgroundColor: 'var(--bg-card)',
+                                    border: '1px solid var(--border-color)'
+                                }}
                             >
-                                {/* Card Header */}
-                                <div className='flex justify-between items-center mb-4'>
-                                    <div className='flex items-center gap-2'>
-                                        <span className='text-xl'>{slot.icon}</span>
-                                        <h3 className='font-bold' style={{ color: 'var(--text-primary)' }}>{slot.label}</h3>
+
+                                {/* CARD HEADER */}
+                                <div className='flex justify-between items-center gap-3 mb-4'>
+
+                                    <div className='flex items-center gap-2 min-w-0'>
+                                        <span className='text-xl flex-shrink-0'>
+                                            {slot.icon}
+                                        </span>
+
+                                        <h3
+                                            className='font-bold truncate'
+                                            style={{ color: 'var(--text-primary)' }}
+                                        >
+                                            {slot.label}
+                                        </h3>
                                     </div>
+
                                     {editing !== slot.key && (
                                         <button
                                             onClick={() => handleEdit(slot.key)}
-                                            className='text-xs px-3 py-1.5 rounded-lg font-semibold hover:opacity-80 transition'
-                                            style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--accent)' }}
+                                            className='text-xs px-3 py-1.5 rounded-lg font-semibold hover:opacity-80 transition whitespace-nowrap'
+                                            style={{
+                                                backgroundColor: 'var(--bg-primary)',
+                                                color: 'var(--accent)'
+                                            }}
                                         >
                                             ✏️ Edit
                                         </button>
@@ -110,44 +163,86 @@ function MenuManagerPage() {
                                 </div>
 
                                 {editing === slot.key ? (
+
                                     <div>
-                                        <p className='text-xs mb-2' style={{ color: 'var(--text-secondary)' }}>One item per line</p>
+
+                                        <p
+                                            className='text-xs mb-2'
+                                            style={{ color: 'var(--text-secondary)' }}
+                                        >
+                                            One item per line
+                                        </p>
+
                                         <textarea
                                             value={editText}
                                             onChange={(e) => setEditText(e.target.value)}
                                             rows={6}
                                             className='w-full px-3 py-2 rounded-lg text-sm focus:outline-none resize-none mb-3'
-                                            style={{ border: '1px solid var(--border-color)', backgroundColor: 'var(--bg-tertiary)', color: 'var(--text-primary)' }}
+                                            style={{
+                                                border: '1px solid var(--border-color)',
+                                                backgroundColor: 'var(--bg-tertiary)',
+                                                color: 'var(--text-primary)'
+                                            }}
                                         />
+
                                         <div className='flex gap-2'>
+
                                             <button
                                                 onClick={() => setEditing(null)}
                                                 className='flex-1 py-2 rounded-lg text-xs font-semibold hover:opacity-80 transition'
-                                                style={{ backgroundColor: 'var(--bg-tertiary)', color: 'var(--text-primary)', border: '1px solid var(--border-color)' }}
+                                                style={{
+                                                    backgroundColor: 'var(--bg-tertiary)',
+                                                    color: 'var(--text-primary)',
+                                                    border: '1px solid var(--border-color)'
+                                                }}
                                             >
                                                 Cancel
                                             </button>
+
                                             <button
                                                 onClick={handleSave}
                                                 className='flex-1 py-2 rounded-lg text-xs font-bold hover:opacity-90 transition'
-                                                style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--accent)' }}
+                                                style={{
+                                                    backgroundColor: 'var(--bg-primary)',
+                                                    color: 'var(--accent)'
+                                                }}
                                             >
                                                 Save
                                             </button>
+
                                         </div>
                                     </div>
+
                                 ) : (
+
                                     <ul className='flex flex-col gap-2'>
+
                                         {menu[selectedDay][slot.key].map((item, idx) => (
-                                            <li key={idx} className='text-sm flex items-center gap-2' style={{ color: 'var(--text-secondary)' }}>
-                                                <span className='w-1.5 h-1.5 rounded-full flex-shrink-0' style={{ backgroundColor: 'var(--accent)' }} />
-                                                {item}
+
+                                            <li
+                                                key={idx}
+                                                className='text-sm flex items-start gap-2 break-words'
+                                                style={{ color: 'var(--text-secondary)' }}
+                                            >
+                                                <span
+                                                    className='w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0'
+                                                    style={{ backgroundColor: 'var(--accent)' }}
+                                                />
+
+                                                <span className='break-words'>
+                                                    {item}
+                                                </span>
                                             </li>
+
                                         ))}
+
                                     </ul>
+
                                 )}
                             </div>
+
                         ))}
+
                     </div>
 
                 </div>
