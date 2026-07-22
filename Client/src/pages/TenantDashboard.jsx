@@ -20,7 +20,7 @@ function TenantDashboard() {
   const complaints = useSelector((state) => state.tenants.complaints ?? []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/tenants")
+    fetch("https://pg-manager-backend-mry1.onrender.com/api/tenants")
       .then((res) => res.json())
       .then((data) => dispatch(setTenants(data)))
       .catch((err) => console.error("Failed to fetch tenants:", err));
@@ -57,7 +57,7 @@ function TenantDashboard() {
 
   useEffect(() => {
     if (!tenant) return;
-    fetch(`http://localhost:5000/api/documents/${tenant.id}`, {
+    fetch(`https://pg-manager-backend-mry1.onrender.com/api/documents/${tenant.id}`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -73,7 +73,7 @@ function TenantDashboard() {
     const formData = new FormData();
     formData.append("file", selectedFile);
 
-    fetch("http://localhost:5000/api/documents", {
+    fetch("https://pg-manager-backend-mry1.onrender.com/api/documents", {
       method: "POST",
       credentials: "include",
       body: formData,
@@ -91,7 +91,7 @@ function TenantDashboard() {
   };
 
   const handleDeleteDocument = (docId) => {
-    fetch(`http://localhost:5000/api/documents/${docId}`, {
+    fetch(`https://pg-manager-backend-mry1.onrender.com/api/documents/${docId}`, {
       method: "DELETE",
       credentials: "include",
     })
@@ -120,7 +120,7 @@ function TenantDashboard() {
       },
     };
 
-    fetch(`http://localhost:5000/api/tenants/profile`, {
+    fetch(`https://pg-manager-backend-mry1.onrender.com/api/tenants/profile`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -661,7 +661,7 @@ function TenantDashboard() {
                   style={{ backgroundColor: "var(--bg-tertiary)" }}
                 >
                   <a
-                    href={`http://localhost:5000/uploads/${doc.filename}`}
+                    href={`https://pg-manager-backend-mry1.onrender.com/uploads/${doc.filename}`}
                     target="_blank"
                     rel="noreferrer"
                     className="text-sm font-medium"

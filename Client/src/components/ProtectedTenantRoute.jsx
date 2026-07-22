@@ -5,7 +5,7 @@ function ProtectedTenantRoute({ children }) {
     const [status, setStatus] = useState('checking')
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/me', { credentials: 'include' })
+        fetch('https://pg-manager-backend-mry1.onrender.com/api/me', { credentials: 'include' })
             .then(res => res.json())
             .then(data => {
                 if (data.loggedIn && data.role === 'tenant') {

@@ -22,7 +22,7 @@ function Sidebar() {
     ]
 
    const handleLogout = () => {
-        fetch('http://localhost:5000/api/logout', {
+        fetch('https://pg-manager-backend-mry1.onrender.com/api/logout', {
             method: 'POST',
             credentials: 'include',
         })
