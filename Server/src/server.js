@@ -18,7 +18,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://pg-website-omega.vercel.app",
     credentials: true,
   }),
 );
@@ -26,8 +26,6 @@ app.use(
 app.use(express.json());
 
 configureSession(app);
-
-app.use("/uploads", express.static("uploads"));
 
 app.use("/uploads", express.static("uploads"));
 
