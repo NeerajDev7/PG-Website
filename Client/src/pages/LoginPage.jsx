@@ -20,7 +20,7 @@ function LoginPage() {
     }
 
    const handleLogin = () => {
-        fetch('https://pg-manager-backend-mry1.onrender.com/api/tenant-login', {
+        fetch('https://pg-manager-backend-mryl.onrender.com/api/tenant-login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
