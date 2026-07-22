@@ -23,7 +23,12 @@ app.use(
   }),
 );
 
+
 app.use(express.json());
+
+app.get("/test", (req, res) => {
+    res.json({ success: true });
+});
 
 configureSession(app);
 
