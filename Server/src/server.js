@@ -32,6 +32,10 @@ app.get("/test", (req, res) => {
 
 configureSession(app);
 
+app.get("/test2", (req, res) => {
+    res.json({ success: true });
+});
+
 app.use("/uploads", express.static("uploads"));
 
 app.use("/api", authRoutes);
