@@ -80,9 +80,6 @@ export const tenantLogin = (req, res) => {
             error: "Session save failed",
           });
         }
-        console.log("LOGIN Session ID:", req.sessionID);
-        console.log("LOGIN Session:", req.session);
-
         res.json({
           success: true,
           tenantId: tenant.id,
