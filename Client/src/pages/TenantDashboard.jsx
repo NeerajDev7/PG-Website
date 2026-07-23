@@ -169,7 +169,7 @@ function TenantDashboard() {
       description: complaintForm.description.trim(),
     };
 
-    fetch("http://127.0.0.1:5000/api/complaints", {
+    fetch("https://pg-manager-backend-mryl.onrender.com/api/complaints", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newComplaint),

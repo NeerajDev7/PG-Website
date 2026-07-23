@@ -11,7 +11,7 @@ function RoomsPage() {
     const [filter, setFilter] = useState('All')
 
     useEffect(()=>{
-        fetch('http://127.0.0.1:5000/api/rooms')
+        fetch('https://pg-manager-backend-mryl.onrender.com/api/rooms')
         .then(res => res.json())
         .then(data=> dispatch(setRooms(data)))
         .catch(err=>console.error('Fetch failed :',err))

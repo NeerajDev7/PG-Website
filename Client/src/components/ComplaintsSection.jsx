@@ -16,7 +16,7 @@ function ComplaintsSection() {
     const complaints = useSelector((state) => state.tenants.complaints ?? [])
 
     useEffect(() => {
-        fetch('http://127.0.0.1:5000/api/complaints')
+        fetch('https://pg-manager-backend-mryl.onrender.com/api/complaints')
             .then(res => res.json())
             .then(data => {
                 const formatted = data.map(c => ({
@@ -38,7 +38,7 @@ function ComplaintsSection() {
     const resolved = complaints.filter(c => c.status === 'resolved')
 
     const handleResolve = (id) => {
-        fetch(`http://127.0.0.1:5000/api/complaints/${id}/resolve`, {
+        fetch(`https://pg-manager-backend-mryl.onrender.com/api/complaints/${id}/resolve`, {
             method: 'PATCH',
         })
             .then(res => res.json())
@@ -53,7 +53,7 @@ function ComplaintsSection() {
     }
 
     const handleDelete = (id) => {
-        fetch(`http://127.0.0.1:5000/api/complaints/${id}`, {
+        fetch(`https://pg-manager-backend-mryl.onrender.com/api/complaints/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

@@ -12,7 +12,7 @@ function MenuManagerPage() {
   const menu = useSelector((state) => state.tenants.menu);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/menu")
+    fetch("https://pg-manager-backend-mryl.onrender.com/api/menu")
       .then((res) => res.json())
       .then((data) => {
         const formatted = data.map((row) => ({
@@ -48,7 +48,7 @@ function MenuManagerPage() {
 
     const dayId = selectedDay + 1; // matches your menu table's auto-increment ids (1-7, Mon-Sun)
 
-    fetch(`http://127.0.0.1:5000/api/menu/${dayId}`, {
+    fetch(`https://pg-manager-backend-mryl.onrender.com/api/menu/${dayId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ mealType: editing, items }),

@@ -80,7 +80,7 @@ function AddTenantPage() {
       paid: false,
     };
 
-    fetch("http://127.0.0.1:5000/api/tenants", {
+    fetch("https://pg-manager-backend-mryl.onrender.com/api/tenants", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newTenant),

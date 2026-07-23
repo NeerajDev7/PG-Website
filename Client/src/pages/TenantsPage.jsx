@@ -11,7 +11,7 @@ function TenantsPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/api/tenants")
+    fetch("https://pg-manager-backend-mryl.onrender.com/api/tenants")
       .then((res) => res.json())
       .then((data) => dispatch(setTenants(data)))
       .catch((err) => console.error("Fetch failed:", err));
@@ -95,7 +95,7 @@ function TenantsPage() {
   const handleConfirmRemove = () => {
     if (!modal.tenant) return;
 
-    fetch(`http://127.0.0.1:5000/api/tenants/${modal.tenant.id}`, {
+    fetch(`https://pg-manager-backend-mryl.onrender.com/api/tenants/${modal.tenant.id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -121,7 +121,7 @@ function TenantsPage() {
   };
 
   const handleMarkPaid = (tenant) => {
-    fetch(`http://127.0.0.1:5000/api/tenants/${tenant.id}/paid`, {
+    fetch(`https://pg-manager-backend-mryl.onrender.com/api/tenants/${tenant.id}/paid`, {
       method: "PATCH",
     })
       .then((res) => res.json())

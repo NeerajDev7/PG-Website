@@ -49,7 +49,7 @@ function AnalyticsPage() {
     const expenses = useSelector((state) => state.expenses.expenses ?? [])
 
     useEffect(() => {
-        fetch('http://127.0.0.1:5000/api/expenses')
+        fetch('https://pg-manager-backend-mryl.onrender.com/api/expenses')
             .then(res => res.json())
             .then(data => dispatch(setExpenses(data)))
             .catch(err => console.error('Failed to fetch expenses:', err))
@@ -116,7 +116,7 @@ function AnalyticsPage() {
         }
 
         if (editingId) {
-            fetch(`http://127.0.0.1:5000/api/expenses/${editingId}`, {
+            fetch(`https://pg-manager-backend-mryl.onrender.com/api/expenses/${editingId}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(expenseData),
@@ -131,7 +131,7 @@ function AnalyticsPage() {
                     toast.error('Failed to update expense')
                 })
         } else {
-            fetch('http://127.0.0.1:5000/api/expenses', {
+            fetch('https://pg-manager-backend-mryl.onrender.com/api/expenses', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(expenseData),
@@ -161,7 +161,7 @@ function AnalyticsPage() {
     }
 
    const handleDelete = (id) => {
-        fetch(`http://127.0.0.1:5000/api/expenses/${id}`, {
+        fetch(`https://pg-manager-backend-mryl.onrender.com/api/expenses/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

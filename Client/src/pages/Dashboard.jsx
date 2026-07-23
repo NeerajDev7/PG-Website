@@ -29,7 +29,7 @@ function Dashboard() {
       "Reset all rents to Pending for new month?",
     );
     if (confirmed) {
-      fetch("http://127.0.0.1:5000/api/tenants/reset-month", {
+      fetch("https://pg-manager-backend-mryl.onrender.com/api/tenants/reset-month", {
         method: "PATCH",
       })
         .then((res) => res.json())
