@@ -80,6 +80,8 @@ export const tenantLogin = (req, res) => {
             error: "Session save failed",
           });
         }
+        console.log("LOGIN Session ID:", req.sessionID);
+        console.log("LOGIN Session:", req.session);
 
         res.json({
           success: true,
@@ -92,27 +94,27 @@ export const tenantLogin = (req, res) => {
 };
 
 export const me = (req, res) => {
-    console.log("Session ID:", req.sessionID);
-    console.log("Session:", req.session);
+  console.log("Session ID:", req.sessionID);
+  console.log("Session:", req.session);
 
-    if (req.session.userId) {
-        return res.json({
-            loggedIn: true,
-            role: req.session.role,
-        });
-    }
-
-    if (req.session.tenantId) {
-        return res.json({
-            loggedIn: true,
-            role: "tenant",
-            tenantId: req.session.tenantId,
-        });
-    }
-
+  if (req.session.userId) {
     return res.json({
-        loggedIn: false,
+      loggedIn: true,
+      role: req.session.role,
     });
+  }
+
+  if (req.session.tenantId) {
+    return res.json({
+      loggedIn: true,
+      role: "tenant",
+      tenantId: req.session.tenantId,
+    });
+  }
+
+  return res.json({
+    loggedIn: false,
+  });
 };
 
 export const logout = (req, res) => {

@@ -16,6 +16,8 @@ import documentRoutes from "./routes/documentRoutes.js";
 
 const app = express();
 
+app.set("trust proxy", 1);
+
 app.use(
   cors({
     origin: "https://pg-website-omega.vercel.app",
