@@ -16,6 +16,8 @@ import documentRoutes from "./routes/documentRoutes.js";
 
 const app = express();
 
+app.set("trust proxy",1);
+
 app.use(
   cors({
     origin: "https://pg-website-omega.vercel.app",
@@ -25,10 +27,6 @@ app.use(
 
 
 app.use(express.json());
-
-app.get("/test", (req, res) => {
-    res.json({ success: true });
-});
 
 configureSession(app);
 
