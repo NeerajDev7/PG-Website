@@ -92,24 +92,27 @@ export const tenantLogin = (req, res) => {
 };
 
 export const me = (req, res) => {
-  if (req.session.userId) {
-    return res.json({
-      loggedIn: true,
-      role: req.session.role,
-    });
-  }
+    console.log("Session ID:", req.sessionID);
+    console.log("Session:", req.session);
 
-  if (req.session.tenantId) {
-    return res.json({
-      loggedIn: true,
-      role: "tenant",
-      tenantId: req.session.tenantId,
-    });
-  }
+    if (req.session.userId) {
+        return res.json({
+            loggedIn: true,
+            role: req.session.role,
+        });
+    }
 
-  res.json({
-    loggedIn: false,
-  });
+    if (req.session.tenantId) {
+        return res.json({
+            loggedIn: true,
+            role: "tenant",
+            tenantId: req.session.tenantId,
+        });
+    }
+
+    return res.json({
+        loggedIn: false,
+    });
 };
 
 export const logout = (req, res) => {
