@@ -6,6 +6,44 @@ import Sidebar from "../components/Sidebar";
 import toast from "react-hot-toast";
 import PageTransition from "../components/PageTransition";
 
+function Field({
+  label,
+  name,
+  placeholder,
+  type = "text",
+  form,
+  errors,
+  handleChange,
+  inputStyle,
+}) {
+  return (
+    <div className="mb-5">
+      <label
+        className="block text-sm font-semibold mb-2"
+        style={{ color: "var(--text-primary)" }}
+      >
+        {label}
+      </label>
+
+      <input
+        name={name}
+        type={type}
+        value={form[name]}
+        onChange={handleChange}
+        placeholder={placeholder}
+        className="w-full px-4 py-3 rounded-lg text-sm focus:outline-none"
+        style={inputStyle(name)}
+      />
+
+      {errors[name] && (
+        <p className="text-xs mt-1" style={{ color: "var(--danger)" }}>
+          {errors[name]}
+        </p>
+      )}
+    </div>
+  );
+}
+
 function AddTenantPage() {
   console.log("AddTenantPage rendered");
   const dispatch = useDispatch();
@@ -122,31 +160,6 @@ function AddTenantPage() {
     color: "var(--text-primary)",
   });
 
-  const Field = ({ label, name, placeholder, type = "text" }) => (
-    <div className="mb-5">
-      <label
-        className="block text-sm font-semibold mb-2"
-        style={{ color: "var(--text-primary)" }}
-      >
-        {label}
-      </label>
-      <input
-        name={name}
-        type={type}
-        value={form[name]}
-        onChange={handleChange}
-        placeholder={placeholder}
-        className="w-full px-4 py-3 rounded-lg text-sm focus:outline-none"
-        style={inputStyle(name)}
-      />
-      {errors[name] && (
-        <p className="text-xs mt-1" style={{ color: "var(--danger)" }}>
-          {errors[name]}
-        </p>
-      )}
-    </div>
-  );
-
   return (
     <PageTransition>
       <div
@@ -184,23 +197,43 @@ function AddTenantPage() {
               Basic Information
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
-              <Field label="Full Name *" name="name" placeholder="Paul Allen" />
+              <Field
+                label="Full Name *"
+                name="name"
+                placeholder="Paul Allen"
+                value={form.name}
+                error={errors.name}
+                onChange={handleChange}
+                style={inputStyle("name")}
+              />
               <Field
                 label="Phone Number *"
                 name="phone"
-                placeholder="9876543210"
                 type="tel"
+                placeholder="9876543210"
+                value={form.phone}
+                error={errors.phone}
+                onChange={handleChange}
+                style={inputStyle("phone")}
               />
               <Field
                 label="Email"
                 name="email"
-                placeholder="paul@gmail.com"
                 type="email"
+                placeholder="paul@gmail.com"
+                value={form.email}
+                error={errors.email}
+                onChange={handleChange}
+                style={inputStyle("email")}
               />
               <Field
                 label="Hometown *"
                 name="hometown"
                 placeholder="Chennai, Tamil Nadu"
+                value={form.hometown}
+                error={errors.hometown}
+                onChange={handleChange}
+                style={inputStyle("hometown")}
               />
             </div>
 
@@ -345,17 +378,29 @@ function AddTenantPage() {
                 label="Name *"
                 name="emergencyName"
                 placeholder="Suresh Kumar"
+                value={form.emergencyName}
+                error={errors.emergencyName}
+                onChange={handleChange}
+                style={inputStyle("emergencyName")}
               />
               <Field
                 label="Phone *"
                 name="emergencyPhone"
-                placeholder="9845012345"
                 type="tel"
+                placeholder="9845012345"
+                value={form.emergencyPhone}
+                error={errors.emergencyPhone}
+                onChange={handleChange}
+                style={inputStyle("emergencyPhone")}
               />
               <Field
                 label="Relation *"
                 name="emergencyRelation"
                 placeholder="Father"
+                value={form.emergencyRelation}
+                error={errors.emergencyRelation}
+                onChange={handleChange}
+                style={inputStyle("emergencyRelation")}
               />
             </div>
 
