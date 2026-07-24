@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import PageTransition from "../components/PageTransition";
 
 function AddTenantPage() {
+  console.log("AddTenantPage rendered");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const tenants = useSelector((state) => state.tenants.tenants);
