@@ -11,10 +11,10 @@ function Field({
   name,
   placeholder,
   type = "text",
-  form,
-  errors,
-  handleChange,
-  inputStyle,
+  value,
+  error,
+  onChange,
+  style,
 }) {
   return (
     <div className="mb-5">
@@ -28,16 +28,16 @@ function Field({
       <input
         name={name}
         type={type}
-        value={form[name]}
-        onChange={handleChange}
+        value={value}
+        onChange={onChange}
         placeholder={placeholder}
         className="w-full px-4 py-3 rounded-lg text-sm focus:outline-none"
-        style={inputStyle(name)}
+        style={style}
       />
 
-      {errors[name] && (
+      {error && (
         <p className="text-xs mt-1" style={{ color: "var(--danger)" }}>
-          {errors[name]}
+          {error}
         </p>
       )}
     </div>
